@@ -1,0 +1,854 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/home.css">
+}
+
+<!-- ===== HERO SECTION WITH SIDEBAR ===== -->
+<section class="hero-section" data-animate="fade-in">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar Categories -->
+            <div class="col-lg-3 d-none d-lg-block">
+                <ul class="category-sidebar">
+                    <li><a href="#">Woman's Fashion <i class="bi bi-chevron-right float-end"></i></a></li>
+                    <li><a href="#">Men's Fashion <i class="bi bi-chevron-right float-end"></i></a></li>
+                    <li><a href="#">Electronics</a></li>
+                    <li><a href="#">Home & Lifestyle</a></li>
+                    <li><a href="#">Medicine</a></li>
+                    <li><a href="#">Sports & Outdoor</a></li>
+                    <li><a href="#">Baby's & Toys</a></li>
+                    <li><a href="#">Groceries & Pets</a></li>
+                    <li><a href="#">Health & Beauty</a></li>
+                </ul>
+            </div>
+            <!-- Hero Banner -->
+            <div class="col-lg-9">
+                <div id="heroCarousel" class="carousel slide hero-banner" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="hero-slide">
+                                <div class="hero-content">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <i class="bi bi-apple fs-3"></i>
+                                        <span>iPhone 14 Series</span>
+                                    </div>
+                                    <h1>Up to 10%<br>off Voucher</h1>
+                                    <a href="#" class="hero-cta">
+                                        Shop Now <i class="bi bi-arrow-right ms-2"></i>
+                                    </a>
+                                </div>
+                                <div class="hero-image">
+                                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&h=400&fit=crop" alt="iPhone 14" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="hero-slide">
+                                <div class="hero-content">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <i class="bi bi-laptop fs-3"></i>
+                                        <span>MacBook Pro</span>
+                                    </div>
+                                    <h1>Up to 15%<br>off Voucher</h1>
+                                    <a href="#" class="hero-cta">
+                                        Shop Now <i class="bi bi-arrow-right ms-2"></i>
+                                    </a>
+                                </div>
+                                <div class="hero-image">
+                                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&h=400&fit=crop" alt="MacBook" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-indicators hero-indicators">
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FLASH SALES ===== -->
+<section class="flash-sales section-padding" data-animate="fade-in">
+    <div class="container">
+        <div class="section-label"><span class="label-marker"></span> Today's</div>
+        <div class="section-header">
+            <div class="d-flex align-items-end gap-5 flex-wrap">
+                <h2 class="section-title mb-0">Flash Sales</h2>
+                <div class="countdown" id="flashCountdown">
+                    <div class="countdown-item">
+                        <span class="count-label">Days</span>
+                        <span class="count-value" id="days">03</span>
+                    </div>
+                    <span class="countdown-sep">:</span>
+                    <div class="countdown-item">
+                        <span class="count-label">Hours</span>
+                        <span class="count-value" id="hours">23</span>
+                    </div>
+                    <span class="countdown-sep">:</span>
+                    <div class="countdown-item">
+                        <span class="count-label">Minutes</span>
+                        <span class="count-value" id="minutes">19</span>
+                    </div>
+                    <span class="countdown-sep">:</span>
+                    <div class="countdown-item">
+                        <span class="count-label">Seconds</span>
+                        <span class="count-value" id="seconds">56</span>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-arrows">
+                <button class="arrow-btn" id="flashPrev"><i class="bi bi-arrow-left"></i></button>
+                <button class="arrow-btn" id="flashNext"><i class="bi bi-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <div class="product-slider-wrapper">
+            <div class="product-slider" id="flashSlider">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-badge">-40%</span>
+                        <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=300&h=300&fit=crop" alt="Gamepad">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">HAVIT HV-G92 Gamepad</h5>
+                        <div class="product-price">
+                            <span class="current-price">$120</span>
+                            <span class="old-price">$160</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <span class="rating-count">(88)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-badge">-35%</span>
+                        <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=300&h=300&fit=crop" alt="Keyboard">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">AK-900 Wired Keyboard</h5>
+                        <div class="product-price">
+                            <span class="current-price">$960</span>
+                            <span class="old-price">$1160</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <span class="rating-count">(75)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-badge">-30%</span>
+                        <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=300&h=300&fit=crop" alt="Monitor">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">IPS LCD Gaming Monitor</h5>
+                        <div class="product-price">
+                            <span class="current-price">$370</span>
+                            <span class="old-price">$400</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <span class="rating-count">(99)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-badge">-25%</span>
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300&h=300&fit=crop" alt="Chair">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">S-Series Comfort Chair</h5>
+                        <div class="product-price">
+                            <span class="current-price">$375</span>
+                            <span class="old-price">$400</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                            <span class="rating-count">(99)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-badge">-35%</span>
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop" alt="Headphones">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">S-Series Comfort Chair</h5>
+                        <div class="product-price">
+                            <span class="current-price">$375</span>
+                            <span class="old-price">$400</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                            <span class="rating-count">(99)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="#" class="btn btn-primary-custom">View All Products</a>
+        </div>
+    </div>
+</section>
+
+<hr class="container">
+
+<!-- ===== BROWSE BY CATEGORY ===== -->
+<section class="categories section-padding" data-animate="fade-in">
+    <div class="container">
+        <div class="section-label"><span class="label-marker"></span> Categories</div>
+        <div class="section-header">
+            <h2 class="section-title mb-0">Browse By Category</h2>
+            <div class="nav-arrows">
+                <button class="arrow-btn" id="catPrev"><i class="bi bi-arrow-left"></i></button>
+                <button class="arrow-btn" id="catNext"><i class="bi bi-arrow-right"></i></button>
+            </div>
+        </div>
+        <div class="row g-4 mt-2">
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="category-card">
+                    <i class="bi bi-phone"></i>
+                    <span>Phones</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="category-card">
+                    <i class="bi bi-laptop"></i>
+                    <span>Computers</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="category-card">
+                    <i class="bi bi-smartwatch"></i>
+                    <span>SmartWatch</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="category-card active">
+                    <i class="bi bi-camera"></i>
+                    <span>Camera</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="category-card">
+                    <i class="bi bi-headphones"></i>
+                    <span>HeadPhones</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="category-card">
+                    <i class="bi bi-controller"></i>
+                    <span>Gaming</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="container">
+
+<!-- ===== BEST SELLING PRODUCTS ===== -->
+<section class="best-selling section-padding" data-animate="fade-in">
+    <div class="container">
+        <div class="section-label"><span class="label-marker"></span> This Month</div>
+        <div class="section-header">
+            <h2 class="section-title mb-0">Best Selling Products</h2>
+            <a href="#" class="btn btn-primary-custom">View All</a>
+        </div>
+        <div class="row g-4 mt-2">
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=300&h=300&fit=crop" alt="North Face Coat">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">The north coat</h5>
+                        <div class="product-price">
+                            <span class="current-price">$260</span>
+                            <span class="old-price">$360</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <span class="rating-count">(65)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=300&h=300&fit=crop" alt="Gucci Bag">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">Gucci duffle bag</h5>
+                        <div class="product-price">
+                            <span class="current-price">$960</span>
+                            <span class="old-price">$1160</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                            <span class="rating-count">(65)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1587302912306-cf1ed9c33146?w=300&h=300&fit=crop" alt="CPU Cooler">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">RGB liquid CPU Cooler</h5>
+                        <div class="product-price">
+                            <span class="current-price">$160</span>
+                            <span class="old-price">$170</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                            <span class="rating-count">(65)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=300&h=300&fit=crop" alt="Bookshelf">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">Small BookShelf</h5>
+                        <div class="product-price">
+                            <span class="current-price">$360</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <span class="rating-count">(65)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MUSIC EXPERIENCE BANNER ===== -->
+<section class="music-banner section-padding" data-animate="fade-in">
+    <div class="container">
+        <div class="music-banner-inner">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="music-content">
+                        <span class="text-success fw-medium">Categories</span>
+                        <h2>Enhance Your<br>Music Experience</h2>
+                        <div class="banner-countdown">
+                            <div class="banner-count-item">
+                                <span class="bc-value">23</span>
+                                <span class="bc-label">Hours</span>
+                            </div>
+                            <div class="banner-count-item">
+                                <span class="bc-value">05</span>
+                                <span class="bc-label">Days</span>
+                            </div>
+                            <div class="banner-count-item">
+                                <span class="bc-value">59</span>
+                                <span class="bc-label">Minutes</span>
+                            </div>
+                            <div class="banner-count-item">
+                                <span class="bc-value">35</span>
+                                <span class="bc-label">Seconds</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-success-custom mt-4">Buy Now!</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="music-image">
+                        <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&h=400&fit=crop" alt="JBL Speaker" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== EXPLORE OUR PRODUCTS ===== -->
+<section class="explore-products section-padding" data-animate="fade-in">
+    <div class="container">
+        <div class="section-label"><span class="label-marker"></span> Our Products</div>
+        <div class="section-header">
+            <h2 class="section-title mb-0">Explore Our Products</h2>
+            <div class="nav-arrows">
+                <button class="arrow-btn"><i class="bi bi-arrow-left"></i></button>
+                <button class="arrow-btn"><i class="bi bi-arrow-right"></i></button>
+            </div>
+        </div>
+        <!-- Row 1 -->
+        <div class="row g-4 mt-2">
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=300&h=300&fit=crop" alt="Dog Food">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">Breed Dry Dog Food</h5>
+                        <div class="product-price">
+                            <span class="current-price">$100</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <span class="rating-count">(35)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=300&h=300&fit=crop" alt="Camera">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">CANON EOS DSLR Camera</h5>
+                        <div class="product-price">
+                            <span class="current-price">$360</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <span class="rating-count">(95)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=300&h=300&fit=crop" alt="Laptop">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">ASUS FHD Gaming Laptop</h5>
+                        <div class="product-price">
+                            <span class="current-price">$700</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <span class="rating-count">(325)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=300&h=300&fit=crop" alt="Curology Set">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">Curology Product Set</h5>
+                        <div class="product-price">
+                            <span class="current-price">$500</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <span class="rating-count">(145)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Row 2 -->
+        <div class="row g-4 mt-1">
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="new-badge">NEW</span>
+                        <img src="https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=300&h=300&fit=crop" alt="Kids Car">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">Kids Electric Car</h5>
+                        <div class="product-price">
+                            <span class="current-price">$960</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <span class="rating-count">(65)</span>
+                        </div>
+                        <div class="color-options">
+                            <span class="color-dot" style="background:#DB4444;"></span>
+                            <span class="color-dot" style="background:#000;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop" alt="Soccer Cleats">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">Jr. Zoom Soccer Cleats</h5>
+                        <div class="product-price">
+                            <span class="current-price">$1160</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <span class="rating-count">(35)</span>
+                        </div>
+                        <div class="color-options">
+                            <span class="color-dot" style="background:#EEFF61;"></span>
+                            <span class="color-dot" style="background:#DB4444;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="new-badge">NEW</span>
+                        <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=300&h=300&fit=crop" alt="Gamepad">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">GP11 Shooter USB Gamepad</h5>
+                        <div class="product-price">
+                            <span class="current-price">$660</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                            <span class="rating-count">(55)</span>
+                        </div>
+                        <div class="color-options">
+                            <span class="color-dot" style="background:#000;"></span>
+                            <span class="color-dot" style="background:#DB4444;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=300&fit=crop" alt="Jacket">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="bi bi-heart"></i></button>
+                            <button class="action-btn"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add To Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h5 class="product-name">Quilted Satin Jacket</h5>
+                        <div class="product-price">
+                            <span class="current-price">$660</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                            <span class="rating-count">(55)</span>
+                        </div>
+                        <div class="color-options">
+                            <span class="color-dot" style="background:#184A48;"></span>
+                            <span class="color-dot" style="background:#DB4444;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a href="#" class="btn btn-primary-custom">View All Products</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== NEW ARRIVAL ===== -->
+<section class="new-arrival section-padding" data-animate="fade-in">
+    <div class="container">
+        <div class="section-label"><span class="label-marker"></span> Featured</div>
+        <h2 class="section-title">New Arrival</h2>
+        <div class="row g-4 mt-2">
+            <!-- PlayStation 5 - Large Card -->
+            <div class="col-lg-6">
+                <div class="arrival-card arrival-card-large">
+                    <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600&h=500&fit=crop" alt="PlayStation 5">
+                    <div class="arrival-content">
+                        <h3>PlayStation 5</h3>
+                        <p>Black and White version of the PS5 coming out on sale.</p>
+                        <a href="#" class="arrival-link">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Side -->
+            <div class="col-lg-6">
+                <!-- Women's Collections -->
+                <div class="arrival-card arrival-card-medium mb-4">
+                    <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=600&h=250&fit=crop" alt="Women's Collections">
+                    <div class="arrival-content">
+                        <h3>Women's Collections</h3>
+                        <p>Featured woman collections that give you another vibe.</p>
+                        <a href="#" class="arrival-link">Shop Now</a>
+                    </div>
+                </div>
+                <div class="row g-4" style="margin-top:0px;">
+                    <!-- Speakers -->
+                    <div class="col-6">
+                        <div class="arrival-card arrival-card-small">
+                            <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?w=300&h=250&fit=crop" alt="Speakers">
+                            <div class="arrival-content">
+                                <h3>Speakers</h3>
+                                <p>Amazon wireless speakers.</p>
+                                <a href="#" class="arrival-link">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Perfume -->
+                    <div class="col-6">
+                        <div class="arrival-card arrival-card-small">
+                            <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=300&h=250&fit=crop" alt="Perfume">
+                            <div class="arrival-content">
+                                <h3>Perfume</h3>
+                                <p>GUCCI INTENSE OUD EDP.</p>
+                                <a href="#" class="arrival-link">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services section-padding" data-animate="fade-in">
+    <div class="container">
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="bi bi-truck"></i>
+                    </div>
+                    <h5>FREE AND FAST DELIVERY</h5>
+                    <p>Free delivery for all orders over $140</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="bi bi-headset"></i>
+                    </div>
+                    <h5>24/7 CUSTOMER SERVICE</h5>
+                    <p>Friendly 24/7 customer support</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <h5>MONEY BACK GUARANTEE</h5>
+                    <p>We return money within 30 days</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section PageJS {
+    <script src="~/js/home.js"></script>
+}

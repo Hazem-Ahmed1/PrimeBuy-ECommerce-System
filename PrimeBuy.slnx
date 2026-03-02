@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="PrimeBuy.Application/PrimeBuy.Application.csproj" />
+  <Project Path="PrimeBuy.Domain/PrimeBuy.Domain.csproj" />
+  <Project Path="PrimeBuy.Infrastructure/PrimeBuy.Infrastructure.csproj" />
+  <Project Path="PrimeBuy.Web/PrimeBuy.Web.csproj" />
+</Solution>

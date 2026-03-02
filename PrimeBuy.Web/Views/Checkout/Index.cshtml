@@ -1,0 +1,136 @@
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/checkout.css">
+}
+
+<!-- ===== BREADCRUMB ===== -->
+<section class="breadcrumb-section">
+    <div class="container">
+        <div class="breadcrumb-nav">
+            <a href="#">Account</a> <span class="separator">/</span>
+            <a href="#">My Account</a> <span class="separator">/</span>
+            <a href="#">Product</a> <span class="separator">/</span>
+            <a href="#">View Cart</a> <span class="separator">/</span>
+            <span class="current">CheckOut</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CHECKOUT SECTION ===== -->
+<section class="checkout-section">
+    <div class="container">
+        <div class="row">
+            <!-- LEFT: Billing Details -->
+            <div class="col-lg-6">
+                <h2>Billing Details</h2>
+                <form id="checkoutForm" class="billing-form" novalidate data-animate="fade-left">
+                    <div>
+                        <label>First Name<span class="required">*</span></label>
+                        <input type="text" class="form-field" required>
+                    </div>
+                    <div>
+                        <label>Company Name</label>
+                        <input type="text" class="form-field">
+                    </div>
+                    <div>
+                        <label>Street Address<span class="required">*</span></label>
+                        <input type="text" class="form-field" required>
+                    </div>
+                    <div>
+                        <label>Apartment, floor, etc. (optional)</label>
+                        <input type="text" class="form-field">
+                    </div>
+                    <div>
+                        <label>Town/City<span class="required">*</span></label>
+                        <input type="text" class="form-field" required>
+                    </div>
+                    <div>
+                        <label>Phone Number<span class="required">*</span></label>
+                        <input type="tel" class="form-field" required>
+                    </div>
+                    <div>
+                        <label>Email Address<span class="required">*</span></label>
+                        <input type="email" class="form-field" required>
+                    </div>
+                    <label class="save-info">
+                        <input type="checkbox" checked>
+                        Save this information for faster check-out next time
+                    </label>
+                </form>
+            </div>
+
+            <!-- RIGHT: Order Summary -->
+            <div class="col-lg-5 offset-lg-1">
+                <div class="order-summary" data-animate="fade-right">
+                    <!-- Order Items -->
+                    <div class="order-item">
+                        <div class="order-item-left">
+                            <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=80&h=80&fit=crop" alt="LCD Monitor">
+                            <span>LCD Monitor</span>
+                        </div>
+                        <div class="order-item-right">$650</div>
+                    </div>
+                    <div class="order-item">
+                        <div class="order-item-left">
+                            <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=80&h=80&fit=crop" alt="H1 Gamepad">
+                            <span>H1 Gamepad</span>
+                        </div>
+                        <div class="order-item-right">$1100</div>
+                    </div>
+
+                    <!-- Totals -->
+                    <div class="summary-row">
+                        <span class="label">Subtotal:</span>
+                        <span class="value">$1750</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="label">Shipping:</span>
+                        <span class="value">Free</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="label">Total:</span>
+                        <span class="value">$1750</span>
+                    </div>
+
+                    <!-- Payment Options -->
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <div class="payment-option-left">
+                                <input type="radio" name="payment" value="bank">
+                                <span>Bank</span>
+                            </div>
+                            <div class="payment-logos">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg" alt="Mastercard">
+                                <img src="https://cdn.worldvectorlogo.com/logos/discover-5.svg" alt="Discover">
+                            </div>
+                        </label>
+                        <label class="payment-option">
+                            <div class="payment-option-left">
+                                <input type="radio" name="payment" value="cod" checked>
+                                <span>Cash on delivery</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Coupon -->
+                    <div class="coupon-row">
+                        <input type="text" placeholder="Coupon Code">
+                        <button class="btn-coupon">Apply Coupon</button>
+                    </div>
+
+                    <!-- Place Order -->
+                    <button type="submit" class="btn-place-order" id="placeOrderBtn">Place Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section PageJS {
+    <script src="~/js/checkout.js"></script>
+}

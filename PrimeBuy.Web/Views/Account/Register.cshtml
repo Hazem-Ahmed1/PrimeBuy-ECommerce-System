@@ -1,0 +1,56 @@
+@{
+    ViewData["Title"] = "Create Account";
+    Layout = "_Layout";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/auth.css">
+}
+
+<section class="auth-section">
+    <div class="container-fluid p-0">
+        <div class="row g-0 align-items-stretch" style="min-height: calc(100vh - 180px);">
+            <!-- Left Image -->
+            <div class="col-lg-6">
+                <div class="auth-image-col h-100" data-animate="fade-left">
+                    <img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=800&h=700&fit=crop" alt="Shopping cart with phone">
+                </div>
+            </div>
+            <!-- Right Form -->
+            <div class="col-lg-6">
+                <div class="auth-form-col h-100" data-animate="fade-right">
+                    <div class="auth-form">
+                        <h2>Create an account</h2>
+                        <p class="auth-subtitle">Enter your details below</p>
+
+                        <form id="signupForm" novalidate>
+                            <div class="input-group-auth">
+                                <input type="text" class="form-input" placeholder="Name" required data-label="Name">
+                                <span class="error-msg"><i class="bi bi-exclamation-circle"></i> <span></span></span>
+                            </div>
+                            <div class="input-group-auth">
+                                <input type="text" class="form-input" placeholder="Email or Phone Number" required data-label="Email or Phone Number">
+                                <span class="error-msg"><i class="bi bi-exclamation-circle"></i> <span></span></span>
+                            </div>
+                            <div class="input-group-auth">
+                                <input type="password" class="form-input" placeholder="Password" required minlength="6" data-label="Password">
+                                <span class="error-msg"><i class="bi bi-exclamation-circle"></i> <span></span></span>
+                            </div>
+
+                            <button type="submit" class="btn-auth">Create Account</button>
+
+                            <button type="button" class="btn-google">
+                                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
+                                Sign up with Google
+                            </button>
+                        </form>
+
+                        <div class="auth-footer-link">
+                            Already have account? <a href="login.html">Log in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

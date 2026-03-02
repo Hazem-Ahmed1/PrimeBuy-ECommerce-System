@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h4>Categories</h4>
+    <a asp-area="Admin" asp-controller="Category" asp-action="Create" class="btn btn-danger">
+        <i class="bi bi-plus-lg me-1"></i> Add Category
+    </a>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Products Count</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Categories will be loaded dynamically from backend -->
+                <tr>
+                    <td>1</td>
+                    <td>Electronics</td>
+                    <td>42</td>
+                    <td>
+                        <a asp-area="Admin" asp-controller="Category" asp-action="Edit" asp-route-id="1" class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <button class="btn btn-sm btn-outline-danger">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,154 @@
+/* ===== ACCOUNT PAGE STYLES ===== */
+
+/* Breadcrumb */
+.breadcrumb-nav a {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.breadcrumb-nav a:hover {
+    color: var(--primary);
+}
+
+.breadcrumb-nav .separator {
+    margin: 0 8px;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.breadcrumb-nav .current {
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+.welcome-text {
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+/* Sidebar */
+.account-sidebar {
+    padding-right: 20px;
+}
+
+.sidebar-title {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
+.sidebar-menu li {
+    margin-bottom: 8px;
+}
+
+.sidebar-menu a {
+    font-size: 14px;
+    color: var(--text-muted);
+    transition: color 0.2s;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    color: var(--primary);
+}
+
+/* Profile Card */
+.profile-card {
+    background: var(--white);
+    border-radius: 4px;
+    padding: 40px;
+    box-shadow: 0 1px 13px rgba(0, 0, 0, 0.05);
+}
+
+.profile-card-title {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--primary);
+    margin-bottom: 24px;
+}
+
+/* Form Fields */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field label {
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+.form-field .form-control {
+    background: var(--gray-bg);
+    border: none;
+    border-radius: 4px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+.form-field .form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.form-field .form-control:focus {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    background: var(--white);
+}
+
+/* Password Section */
+.password-title {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+/* Buttons */
+.btn-cancel {
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: var(--text-main);
+    cursor: pointer;
+    padding: 12px 24px;
+    transition: color 0.2s;
+}
+
+.btn-cancel:hover {
+    color: var(--primary);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 991px) {
+    .account-sidebar {
+        padding-right: 0;
+        margin-bottom: 24px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .profile-card {
+        padding: 24px;
+    }
+
+    .welcome-text {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-card {
+        padding: 16px;
+    }
+}

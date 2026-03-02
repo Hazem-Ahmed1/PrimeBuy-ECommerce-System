@@ -1,0 +1,488 @@
+@{
+    ViewData["Title"] = "Shop";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/shop.css">
+}
+
+<!-- ===== SHOP CONTENT ===== -->
+<section class="section-padding">
+    <div class="container">
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb-nav mb-4">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <span class="current">Shop</span>
+        </nav>
+
+        <!-- Mobile Filter Toggle -->
+        <button class="filter-toggle-btn" id="filterToggle">
+            <i class="bi bi-funnel"></i> Filters
+        </button>
+
+        <!-- Filter Overlay (mobile) -->
+        <div class="filter-overlay" id="filterOverlay"></div>
+
+        <div class="shop-layout" data-animate="fade-in">
+
+            <!-- ===== LEFT FILTER SIDEBAR ===== -->
+            <aside class="filter-sidebar" id="filterSidebar">
+
+                <!-- Mobile close header (hidden on desktop) -->
+                <div class="filter-close-btn d-lg-none">
+                    <span>Filters</span>
+                    <button id="filterClose"><i class="bi bi-x-lg"></i></button>
+                </div>
+
+                <!-- Category -->
+                <div class="filter-group">
+                    <div class="filter-group-title" data-toggle="filter">
+                        Category <i class="bi bi-chevron-down"></i>
+                    </div>
+                    <ul class="filter-list filter-body">
+                        <li><a href="#" class="active">Woman's Fashion <span class="count">(324)</span></a></li>
+                        <li><a href="#">Men's Fashion <span class="count">(218)</span></a></li>
+                        <li><a href="#">Electronics <span class="count">(156)</span></a></li>
+                        <li><a href="#">Home & Lifestyle <span class="count">(89)</span></a></li>
+                        <li><a href="#">Medicine <span class="count">(43)</span></a></li>
+                        <li><a href="#">Sports & Outdoor <span class="count">(67)</span></a></li>
+                        <li><a href="#">Baby's & Toys <span class="count">(92)</span></a></li>
+                        <li><a href="#">Groceries & Pets <span class="count">(54)</span></a></li>
+                        <li><a href="#">Health & Beauty <span class="count">(113)</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- Price Range -->
+                <div class="filter-group">
+                    <div class="filter-group-title" data-toggle="filter">
+                        Price <i class="bi bi-chevron-down"></i>
+                    </div>
+                    <div class="price-range-wrapper filter-body">
+                        <input type="range" class="price-slider" id="priceRange" min="0" max="2000" value="1500">
+                        <div class="price-labels">
+                            <span>$0</span>
+                            <span id="priceValue">$1500</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand -->
+                <div class="filter-group">
+                    <div class="filter-group-title" data-toggle="filter">
+                        Brand <i class="bi bi-chevron-down"></i>
+                    </div>
+                    <div class="filter-body">
+                        <label class="filter-check"><input type="checkbox" checked> Samsung</label>
+                        <label class="filter-check"><input type="checkbox"> Apple</label>
+                        <label class="filter-check"><input type="checkbox"> Xiaomi</label>
+                        <label class="filter-check"><input type="checkbox"> Sony</label>
+                        <label class="filter-check"><input type="checkbox"> LG</label>
+                        <label class="filter-check"><input type="checkbox"> HAVIT</label>
+                    </div>
+                </div>
+
+                <!-- Colour -->
+                <div class="filter-group">
+                    <div class="filter-group-title" data-toggle="filter">
+                        Colour <i class="bi bi-chevron-down"></i>
+                    </div>
+                    <div class="color-filter-list filter-body">
+                        <span class="color-swatch active" style="background:#000;"></span>
+                        <span class="color-swatch" style="background:#DB4444;"></span>
+                        <span class="color-swatch" style="background:#FFAD33;"></span>
+                        <span class="color-swatch" style="background:#00FF66;"></span>
+                        <span class="color-swatch" style="background:#2F80ED;"></span>
+                        <span class="color-swatch" style="background:#A259FF;"></span>
+                        <span class="color-swatch" style="background:#E0E0E0;"></span>
+                        <span class="color-swatch" style="background:#FF6F91;"></span>
+                    </div>
+                </div>
+
+                <!-- Size -->
+                <div class="filter-group">
+                    <div class="filter-group-title" data-toggle="filter">
+                        Size <i class="bi bi-chevron-down"></i>
+                    </div>
+                    <div class="filter-body">
+                        <label class="filter-check"><input type="checkbox"> XS</label>
+                        <label class="filter-check"><input type="checkbox" checked> S</label>
+                        <label class="filter-check"><input type="checkbox" checked> M</label>
+                        <label class="filter-check"><input type="checkbox"> L</label>
+                        <label class="filter-check"><input type="checkbox"> XL</label>
+                        <label class="filter-check"><input type="checkbox"> XXL</label>
+                    </div>
+                </div>
+
+                <!-- Rating -->
+                <div class="filter-group">
+                    <div class="filter-group-title" data-toggle="filter">
+                        Rating <i class="bi bi-chevron-down"></i>
+                    </div>
+                    <div class="filter-body">
+                        <label class="rating-filter-item">
+                            <input type="checkbox">
+                            <span class="stars">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            </span>
+                        </label>
+                        <label class="rating-filter-item">
+                            <input type="checkbox" checked>
+                            <span class="stars">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star empty"></i>
+                            </span>
+                            & Up
+                        </label>
+                        <label class="rating-filter-item">
+                            <input type="checkbox">
+                            <span class="stars">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star empty"></i><i class="bi bi-star empty"></i>
+                            </span>
+                            & Up
+                        </label>
+                        <label class="rating-filter-item">
+                            <input type="checkbox">
+                            <span class="stars">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star empty"></i><i class="bi bi-star empty"></i><i class="bi bi-star empty"></i>
+                            </span>
+                            & Up
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Apply -->
+                <button class="btn-apply-filter" id="applyFilterBtn">Apply Filters</button>
+
+            </aside>
+
+            <!-- ===== RIGHT PRODUCTS AREA ===== -->
+            <div class="products-area">
+
+                <!-- Toolbar -->
+                <div class="shop-toolbar">
+                    <p class="shop-result-count mb-0">Showing <strong>1–12</strong> of <strong>156</strong> results</p>
+                    <div class="shop-toolbar-right">
+                        <div class="shop-sort">
+                            <label>Sort by:</label>
+                            <select id="sortSelect">
+                                <option value="default">Default</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="newest">Newest</option>
+                                <option value="rating">Best Rating</option>
+                                <option value="popular">Popularity</option>
+                            </select>
+                        </div>
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="grid" title="Grid View"><i class="bi bi-grid-3x3-gap"></i></button>
+                            <button class="view-btn" data-view="list" title="List View"><i class="bi bi-list-ul"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid" id="productsGrid">
+
+                    <!-- Card 1 -->
+                    <div class="shop-card">
+                        <div class="shop-card-image">
+                            <span class="shop-badge discount">-40%</span>
+                            <div class="shop-actions">
+                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
+                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=200&h=200&fit=crop" alt="HAVIT HV-G92 Gamepad">
+                            <button class="shop-add-cart">Add To Cart</button>
+                        </div>
+                        <div class="shop-card-info">
+                            <p class="shop-card-name"><a href="product.html">HAVIT HV-G92 Gamepad</a></p>
+                            <div class="shop-card-prices">
+                                <span class="shop-price-new">$120</span>
+                                <span class="shop-price-old">$160</span>
+                            </div>
+                            <div class="shop-card-rating">
+                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                                <span class="count">(88)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="shop-card">
+                        <div class="shop-card-image">
+                            <span class="shop-badge discount">-35%</span>
+                            <div class="shop-actions">
+                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
+                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=200&h=200&fit=crop" alt="AK-900 Wired Keyboard">
+                            <button class="shop-add-cart">Add To Cart</button>
+                        </div>
+                        <div class="shop-card-info">
+                            <p class="shop-card-name"><a href="product.html">AK-900 Wired Keyboard</a></p>
+                            <div class="shop-card-prices">
+                                <span class="shop-price-new">$960</span>
+                                <span class="shop-price-old">$1160</span>
+                            </div>
+                            <div class="shop-card-rating">
+                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
+                                <span class="count">(75)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="shop-card">
+                        <div class="shop-card-image">
+                            <span class="shop-badge discount">-30%</span>
+                            <div class="shop-actions">
+                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
+                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=200&h=200&fit=crop" alt="IPS LCD Gaming Monitor">
+                            <button class="shop-add-cart">Add To Cart</button>
+                        </div>
+                        <div class="shop-card-info">
+                            <p class="shop-card-name"><a href="product.html">IPS LCD Gaming Monitor</a></p>
+                            <div class="shop-card-prices">
+                                <span class="shop-price-new">$370</span>
+                                <span class="shop-price-old">$400</span>
+                            </div>
+                            <div class="shop-card-rating">
+                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                                <span class="count">(99)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="shop-card">
+                        <div class="shop-card-image">
+                            <span class="shop-badge new">NEW</span>
+                            <div class="shop-actions">
+                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
+                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1587302912306-cf1ed9c33146?w=200&h=200&fit=crop" alt="RGB Liquid CPU Cooler">
+                            <button class="shop-add-cart">Add To Cart</button>
+                        </div>
+                        <div class="shop-card-info">
+                            <p class="shop-card-name"><a href="product.html">RGB Liquid CPU Cooler</a></p>
+                            <div class="shop-card-prices">
+                                <span class="shop-price-new">$160</span>
+                                <span class="shop-price-old">$170</span>
+                            </div>
+                            <div class="shop-card-rating">
+                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
+                                <span class="count">(65)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="shop-card">
+                        <div class="shop-card-image">
+                            <div class="shop-actions">
+                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
+                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=200&h=200&fit=crop" alt="Gucci Duffle Bag">
+                            <button class="shop-add-cart">Add To Cart</button>
+                        </div>
+                        <div class="shop-card-info">
+                            <p class="shop-card-name"><a href="product.html">Gucci Duffle Bag</a></p>
+                            <div class="shop-card-prices">
+                                <span class="shop-price-new">$960</span>
+                                <span class="shop-price-old">$1160</span>
+                            </div>
+                            <div class="shop-card-rating">
+                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
+                                <span class="count">(65)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="shop-card">
+                        <div class="shop-card-image">
+                            <span class="shop-badge discount">-25%</span>
+                            <div class="shop-actions">
+                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
+                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop" alt="S-Series Comfort Chair">
+                            <button class="shop-add-cart">Add To Cart</button>
+                        </div>
+                        <div class="shop-card-info">
+                            <p class="shop-card-name"><a href="product.html">Small BookSelf</a></p>
+                            <div class="shop-card-prices">
+                                <span class="shop-price-new">$360</span>
+                            </div>
+                            <div class="shop-card-rating">
+                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                                <span class="count">(65)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 7 -->
+                    <div class="shop-card">
+                        <div class="shop-card-image">
+                            <span class="shop-badge new">NEW</span>
+                            <div class="shop-actions">
+                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
+                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop" alt="Breed Dry Dog Food">
+                            <button class="shop-add-cart">Add To Cart</button>
+                        </div>
+                        <div class="shop-card-info">
+                            <p class="shop-card-name"><a href="product.html">Breed Dry Dog Food</a></p>
+                            <div class="shop-card-prices">
+                                <span class="shop-price-new">$100</span>
+                            </div>
+                            <div class="shop-card-rating">
+                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><i class="bi bi-star"></i></span>
+                                <span class="count">(35)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 8 -->
+                    <div class="shop-card">
+                        <div class="shop-card-image">
+                            <span class="shop-badge discount">-15%</span>
+                            <div class="shop-actions">
+                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
+                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=200&h=200&fit=crop" alt="CANON EOS DSLR Camera">
+                            <button class="shop-add-cart">Add To Cart</button>
+                        </div>
+                        <div class="shop-card-info">
+                            <p class="shop-card-name"><a href="product.html">CANON EOS DSLR Camera</a></p>
+                            <div class="shop-card-prices">
+                                <span class="shop-price-new">$360</span>
+                                <span class="shop-price-old">$400</span>
+                            </div>
+                            <div class="shop-card-rating">
+                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
+                                <span class="count">(95)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 9 -->
+                    <div class="shop-card">
+                        <div class="shop-card-image">
+                            <div class="shop-actions">
+                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
+                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=200&h=200&fit=crop" alt="ASUS FHD Gaming Laptop">
+                            <button class="shop-add-cart">Add To Cart</button>
+                        </div>
+                        <div class="shop-card-info">
+                            <p class="shop-card-name"><a href="product.html">ASUS FHD Gaming Laptop</a></p>
+                            <div class="shop-card-prices">
+                                <span class="shop-price-new">$700</span>
+                            </div>
+                            <div class="shop-card-rating">
+                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                                <span class="count">(325)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 10 -->
+                    <div class="shop-card">
+                        <div class="shop-card-image">
+                            <span class="shop-badge discount">-20%</span>
+                            <div class="shop-actions">
+                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
+                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=200&h=200&fit=crop" alt="Curology Product Set">
+                            <button class="shop-add-cart">Add To Cart</button>
+                        </div>
+                        <div class="shop-card-info">
+                            <p class="shop-card-name"><a href="product.html">Curology Product Set</a></p>
+                            <div class="shop-card-prices">
+                                <span class="shop-price-new">$500</span>
+                                <span class="shop-price-old">$600</span>
+                            </div>
+                            <div class="shop-card-rating">
+                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
+                                <span class="count">(145)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 11 -->
+                    <div class="shop-card">
+                        <div class="shop-card-image">
+                            <div class="shop-actions">
+                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
+                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop" alt="Kids Electric Car">
+                            <button class="shop-add-cart">Add To Cart</button>
+                        </div>
+                        <div class="shop-card-info">
+                            <p class="shop-card-name"><a href="product.html">Kids Electric Car</a></p>
+                            <div class="shop-card-prices">
+                                <span class="shop-price-new">$960</span>
+                            </div>
+                            <div class="shop-card-rating">
+                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                                <span class="count">(65)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 12 -->
+                    <div class="shop-card">
+                        <div class="shop-card-image">
+                            <span class="shop-badge discount">-10%</span>
+                            <div class="shop-actions">
+                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
+                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=200&h=200&fit=crop" alt="Jr. Zoom Soccer Cleats">
+                            <button class="shop-add-cart">Add To Cart</button>
+                        </div>
+                        <div class="shop-card-info">
+                            <p class="shop-card-name"><a href="product.html">Jr. Zoom Soccer Cleats</a></p>
+                            <div class="shop-card-prices">
+                                <span class="shop-price-new">$1160</span>
+                                <span class="shop-price-old">$1260</span>
+                            </div>
+                            <div class="shop-card-rating">
+                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                                <span class="count">(35)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Pagination -->
+                <div class="shop-pagination">
+                    <button class="page-btn disabled"><i class="bi bi-chevron-left"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn">...</button>
+                    <button class="page-btn">13</button>
+                    <button class="page-btn"><i class="bi bi-chevron-right"></i></button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section PageJS {
+    <script src="~/js/shop.js"></script>
+}

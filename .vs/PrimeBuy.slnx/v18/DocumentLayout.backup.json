@@ -1,0 +1,549 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\shop\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\shop\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\contact\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\contact\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\checkout\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\checkout\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\account\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\account\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\about\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\about\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\home\\notfound.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\home\\notfound.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\wishlist\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\wishlist\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\product\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\product\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\controllers\\wishlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\controllers\\wishlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\controllers\\checkoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\controllers\\checkoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\controllers\\aboutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\controllers\\aboutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40E18D4C-3EC2-E06B-424F-D8D210AF2FCB}|PrimeBuy.Infrastructure\\PrimeBuy.Infrastructure.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40E18D4C-3EC2-E06B-424F-D8D210AF2FCB}|PrimeBuy.Infrastructure\\PrimeBuy.Infrastructure.csproj|solutionrelative:primebuy.infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\controllers\\contactcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\controllers\\contactcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\wwwroot\\js\\main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\wwwroot\\js\\main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.web\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85BD866-9AC1-780F-8014-C16E6E6D61D9}|PrimeBuy.Web\\PrimeBuy.Web.csproj|solutionrelative:primebuy.web\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E554EC3-80CD-32B4-4A34-49F956828442}|PrimeBuy.Domain\\PrimeBuy.Domain.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E554EC3-80CD-32B4-4A34-49F956828442}|PrimeBuy.Domain\\PrimeBuy.Domain.csproj|solutionrelative:primebuy.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDB656D5-69D5-18BD-03B1-D94521688C6B}|PrimeBuy.Application\\PrimeBuy.Application.csproj|d:\\iti 9 month\\iti projects\\primebuy\\primebuy.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EDB656D5-69D5-18BD-03B1-D94521688C6B}|PrimeBuy.Application\\PrimeBuy.Application.csproj|solutionrelative:primebuy.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{75504045-d02f-44e5-bf60-5f60df380e8b}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Contact\\Index.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\Contact\\Index.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Contact\\Index.cshtml*",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\Contact\\Index.cshtml*",
+              "ViewState": "AgIAABsAAAAAAAAAAAAUwDUAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-02T00:52:36.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Checkout\\Index.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\Checkout\\Index.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Checkout\\Index.cshtml*",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\Checkout\\Index.cshtml*",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAUwIMAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-02T00:52:20.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "NotFound.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Home\\NotFound.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\Home\\NotFound.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Home\\NotFound.cshtml",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\Home\\NotFound.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-02T00:50:23.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Shop\\Index.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\Shop\\Index.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Shop\\Index.cshtml*",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\Shop\\Index.cshtml*",
+              "ViewState": "AgIAAMkBAAAAAAAAAAAQwNwBAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-02T00:50:19.294Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Account\\Index.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\Account\\Index.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Account\\Index.cshtml",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\Account\\Index.cshtml",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAAkAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-02T00:21:28.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\About\\Index.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\About\\Index.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\About\\Index.cshtml",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\About\\Index.cshtml",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAQwAkAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-01T23:48:42.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "WishlistController.cs",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Controllers\\WishlistController.cs",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Controllers\\WishlistController.cs",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Controllers\\WishlistController.cs",
+              "RelativeToolTip": "PrimeBuy.Web\\Controllers\\WishlistController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T23:08:23.802Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\Account\\Login.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-02T00:22:55.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\Account\\Register.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Account\\Register.cshtml",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\Account\\Register.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-02T00:24:13.414Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Cart\\Index.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\Cart\\Index.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Cart\\Index.cshtml",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\Cart\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-01T23:57:44.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Wishlist\\Index.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\Wishlist\\Index.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Wishlist\\Index.cshtml",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\Wishlist\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAANsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-01T23:55:15.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Controllers\\CartController.cs",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Controllers\\CartController.cs",
+              "RelativeToolTip": "PrimeBuy.Web\\Controllers\\CartController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T23:57:37.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-01T18:52:08.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\Shared\\Error.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\Shared\\Error.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-01T18:54:44.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "PrimeBuy.Web\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T23:07:51.323Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "CheckoutController.cs",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Controllers\\CheckoutController.cs",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Controllers\\CheckoutController.cs",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Controllers\\CheckoutController.cs",
+              "RelativeToolTip": "PrimeBuy.Web\\Controllers\\CheckoutController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T23:07:50.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AboutController.cs",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Controllers\\AboutController.cs",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Controllers\\AboutController.cs",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Controllers\\AboutController.cs",
+              "RelativeToolTip": "PrimeBuy.Web\\Controllers\\AboutController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T23:07:07.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Controllers\\ProductController.cs",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "PrimeBuy.Web\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T19:10:26.978Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Product\\Details.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\Product\\Details.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Product\\Details.cshtml",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\Product\\Details.cshtml",
+              "ViewState": "AgIAADwAAAAAAAAAAAAgwAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-01T21:04:21.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-01T19:04:52.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ContactController.cs",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Controllers\\ContactController.cs",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Controllers\\ContactController.cs",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Controllers\\ContactController.cs",
+              "RelativeToolTip": "PrimeBuy.Web\\Controllers\\ContactController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T20:47:59.578Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "main.js",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\wwwroot\\js\\main.js",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\wwwroot\\js\\main.js",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\wwwroot\\js\\main.js",
+              "RelativeToolTip": "PrimeBuy.Web\\wwwroot\\js\\main.js",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAswAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-03-01T19:00:44.45Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Program.cs",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Program.cs",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Program.cs",
+              "RelativeToolTip": "PrimeBuy.Web\\Program.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAqwBIAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-28T21:28:42.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Infrastructure\\Class1.cs",
+              "RelativeDocumentMoniker": "PrimeBuy.Infrastructure\\Class1.cs",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Infrastructure\\Class1.cs",
+              "RelativeToolTip": "PrimeBuy.Infrastructure\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-28T21:30:27.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-01T18:52:04.615Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\_ViewImports.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-28T23:17:46.495Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "PrimeBuy.Web\\Views\\_ViewStart.cshtml",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Web\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "PrimeBuy.Web\\Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-28T23:17:45.608Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Domain\\Class1.cs",
+              "RelativeDocumentMoniker": "PrimeBuy.Domain\\Class1.cs",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Domain\\Class1.cs",
+              "RelativeToolTip": "PrimeBuy.Domain\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-28T21:30:51.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Application\\Class1.cs",
+              "RelativeDocumentMoniker": "PrimeBuy.Application\\Class1.cs",
+              "ToolTip": "D:\\ITI 9 Month\\ITI Projects\\PrimeBuy\\PrimeBuy.Application\\Class1.cs",
+              "RelativeToolTip": "PrimeBuy.Application\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-28T21:29:49.376Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 281,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 56,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/contact.css">
+}
+
+<!-- ===== CONTACT CONTENT ===== -->
+<section class="section-padding">
+    <div class="container">
+        <nav class="breadcrumb-nav mb-5">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <span class="current">Contact</span>
+        </nav>
+
+        <div class="contact-wrapper">
+            <!-- Left Info Card -->
+            <div class="contact-info-card" data-animate="fade-left">
+                <div class="contact-block">
+                    <div class="contact-block-header">
+                        <span class="contact-icon"><i class="bi bi-telephone"></i></span>
+                        <h6>Call To Us</h6>
+                    </div>
+                    <p>We are available 24/7, 7 days a week.</p>
+                    <p>Phone: +8801611112222</p>
+                </div>
+                <div class="contact-block">
+                    <div class="contact-block-header">
+                        <span class="contact-icon"><i class="bi bi-envelope"></i></span>
+                        <h6>Write To US</h6>
+                    </div>
+                    <p>Fill out our form and we will contact you within 24 hours.</p>
+                    <p>Emails: customer@exclusive.com</p>
+                    <p>Emails: support@exclusive.com</p>
+                </div>
+            </div>
+
+            <!-- Right Form Card -->
+            <div class="contact-form-card" data-animate="fade-right">
+                <form id="contactForm">
+                    <div class="contact-form-top">
+                        <input type="text" class="contact-input" placeholder="Your Name *" required>
+                        <input type="email" class="contact-input" placeholder="Your Email *" required>
+                        <input type="tel" class="contact-input" placeholder="Your Phone *" required>
+                    </div>
+                    <textarea class="contact-textarea" placeholder="Your Massage" rows="8"></textarea>
+                    <button type="submit" class="btn-send-message">Send Massage</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section PageJS {
+    <script src="~/js/contact.js"></script>
+}

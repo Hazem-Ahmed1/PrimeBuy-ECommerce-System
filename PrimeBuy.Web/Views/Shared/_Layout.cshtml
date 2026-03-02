@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - PrimeBuy</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Shared Global CSS -->
+    <link rel="stylesheet" href="~/css/global.css">
+    <!-- Page-specific CSS via Section -->
+    @await RenderSectionAsync("Styles", false)
+</head>
+<body>
+
+    <!-- ===== TOP PROMO BAR ===== -->
+    <div class="promo-bar">
+        <div class="container">
+            <p class="mb-0 text-center">
+                Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
+                <a asp-controller="Shop" asp-action="Index" class="text-white fw-bold ms-2">ShopNow</a>
+            </p>
+        </div>
+        <div class="promo-lang">
+            English <i class="bi bi-chevron-down ms-1"></i>
+        </div>
+    </div>
+
+    <!-- ===== HEADER / NAVBAR ===== -->
+    <header class="header-area border-bottom">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg py-3">
+                <a class="navbar-brand fw-bold fs-4" asp-controller="Home" asp-action="Index">PrimeBuy</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav mx-auto gap-lg-4">
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" ? "active" : "")"
+                               asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Shop" ? "active" : "")"
+                               asp-controller="Shop" asp-action="Index">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Contact" ? "active" : "")"
+                               asp-controller="Contact" asp-action="Index">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "About" ? "active" : "")"
+                               asp-controller="About" asp-action="Index">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Account" ? "active" : "")"
+                               asp-controller="Account" asp-action="Register">Sign Up</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="search-box">
+                            <input type="text" placeholder="What are you looking for?" class="form-control">
+                            <i class="bi bi-search"></i>
+                        </div>
+                        <a asp-controller="Wishlist" asp-action="Index" class="icon-link"><i class="bi bi-heart"></i></a>
+                        <a asp-controller="Cart" asp-action="Index" class="icon-link position-relative">
+                            <i class="bi bi-cart3"></i>
+                            <span class="cart-badge">2</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+    @RenderBody()
+
+    <!-- ===== SCROLL TO TOP ===== -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Column 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-brand">Exclusive</h4>
+                    <p class="mt-3">Subscribe</p>
+                    <p class="text-muted-light">Get 10% off your first order</p>
+                    <div class="subscribe-input">
+                        <input type="email" placeholder="Enter your email">
+                        <button><i class="bi bi-send"></i></button>
+                    </div>
+                </div>
+                <!-- Column 2 -->
+                <div class="col-lg-2 col-md-6">
+                    <h5>Support</h5>
+                    <ul class="footer-links">
+                        <li>111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</li>
+                        <li><a href="mailto:exclusive@gmail.com">exclusive@gmail.com</a></li>
+                        <li><a href="tel:+88015888889999">+88015-88888-9999</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3 -->
+                <div class="col-lg-2 col-md-6">
+                    <h5>Account</h5>
+                    <ul class="footer-links">
+                        <li><a asp-controller="Account" asp-action="Index">My Account</a></li>
+                        <li><a asp-controller="Account" asp-action="Login">Login / Register</a></li>
+                        <li><a asp-controller="Cart" asp-action="Index">Cart</a></li>
+                        <li><a asp-controller="Wishlist" asp-action="Index">Wishlist</a></li>
+                        <li><a asp-controller="Shop" asp-action="Index">Shop</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4 -->
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Link</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms Of Use</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a asp-controller="Contact" asp-action="Index">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Column 5 -->
+                <div class="col-lg-3 col-md-6">
+                    <h5>Download App</h5>
+                    <p class="text-muted-light small">Save $3 with App New User Only</p>
+                    <div class="d-flex gap-2 mb-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/270px-Google_Play_Store_badge_EN.svg.png" alt="Google Play" class="store-badge">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="store-badge">
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary mt-5">
+            <p class="text-center text-muted-light mb-0 py-3">&copy; Copyright Rimel 2022. All right reserved</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <!-- Shared JS -->
+    <script src="~/js/main.js"></script>
+    <!-- Page-specific JS via Section -->
+    @await RenderSectionAsync("PageJS", false)
+    <!-- Scroll Animations -->
+    <script src="~/js/animations.js"></script>
+    @await RenderSectionAsync("Scripts", false)
+</body>
+</html>

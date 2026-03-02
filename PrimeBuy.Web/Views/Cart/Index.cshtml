@@ -1,0 +1,105 @@
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/cart.css">
+}
+
+<!-- ===== CART CONTENT ===== -->
+<section class="section-padding">
+    <div class="container">
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb-nav mb-5">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <span class="current">Cart</span>
+        </nav>
+
+        <!-- Cart Table -->
+        <table class="cart-table" data-animate="fade-in">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-price="650">
+                    <td>
+                        <div class="product-cell">
+                            <div class="product-thumb-wrapper">
+                                <button class="remove-btn" title="Remove"><i class="bi bi-x"></i></button>
+                                <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=100&h=100&fit=crop" alt="LCD Monitor" class="product-thumb">
+                            </div>
+                            <span class="product-name">LCD Monitor</span>
+                        </div>
+                    </td>
+                    <td>$650</td>
+                    <td>
+                        <input type="number" class="qty-spinner" value="01" min="1" max="99">
+                    </td>
+                    <td class="row-subtotal">$650</td>
+                </tr>
+                <tr class="spacer-row"><td colspan="4"></td></tr>
+                <tr data-price="550">
+                    <td>
+                        <div class="product-cell">
+                            <div class="product-thumb-wrapper">
+                                <button class="remove-btn" title="Remove"><i class="bi bi-x"></i></button>
+                                <img src="https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=100&h=100&fit=crop" alt="H1 Gamepad" class="product-thumb">
+                            </div>
+                            <span class="product-name">H1 Gamepad</span>
+                        </div>
+                    </td>
+                    <td>$550</td>
+                    <td>
+                        <input type="number" class="qty-spinner" value="02" min="1" max="99">
+                    </td>
+                    <td class="row-subtotal">$1100</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Cart Action Buttons -->
+        <div class="cart-actions" data-animate="fade-in">
+            <a href="index.html" class="btn-outline-cart">Return To Shop</a>
+            <button class="btn-outline-cart" id="updateCartBtn">Update Cart</button>
+        </div>
+
+        <!-- Coupon + Cart Total -->
+        <div class="coupon-total-row" data-animate="fade-in">
+            <!-- Coupon -->
+            <div class="coupon-section">
+                <input type="text" class="coupon-input" placeholder="Coupon Code">
+                <button class="btn-coupon" id="applyCouponBtn">Apply Coupon</button>
+            </div>
+
+            <!-- Cart Total -->
+            <div class="cart-total-box">
+                <h5>Cart Total</h5>
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">$1750</span>
+                </div>
+                <div class="total-row">
+                    <span>Shipping:</span>
+                    <span>Free</span>
+                </div>
+                <div class="total-row final">
+                    <span>Total:</span>
+                    <span id="cartTotal">$1750</span>
+                </div>
+                <a href="checkout.html" class="btn-checkout">Process to checkout</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+@section PageJS {
+    <script src="~/js/cart.js"></script>
+}

@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "Page Not Found";
+    Layout = "_Layout";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/404.css">
+}
+
+
+<section class="section-padding">
+    <div class="container">
+        <nav class="breadcrumb-nav mb-5">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <span class="current">404 Error</span>
+        </nav>
+
+        <div class="error-section" data-animate="fade-in">
+            <h1 class="error-title">404 Not Found</h1>
+            <p class="error-text">Your visited page not found. You may go home page.</p>
+            <a href="index.html" class="btn-back-home">Back to home page</a>
+        </div>
+    </div>
+</section>

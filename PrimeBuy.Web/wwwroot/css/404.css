@@ -1,0 +1,78 @@
+/* ===== 404 PAGE STYLES ===== */
+
+/* Breadcrumb */
+.breadcrumb-nav a {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.breadcrumb-nav a:hover {
+    color: var(--primary);
+}
+
+.breadcrumb-nav .separator {
+    margin: 0 8px;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.breadcrumb-nav .current {
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+/* 404 Content */
+.error-section {
+    text-align: center;
+    padding: 80px 0 100px;
+}
+
+.error-title {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 110px;
+    line-height: 1.15;
+    margin-bottom: 24px;
+}
+
+.error-text {
+    font-size: 14px;
+    color: var(--text-main);
+    margin-bottom: 48px;
+}
+
+.btn-back-home {
+    display: inline-block;
+    padding: 16px 48px;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+}
+
+.btn-back-home:hover {
+    background: #c33;
+    color: var(--white);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 767px) {
+    .error-title {
+        font-size: 64px;
+    }
+
+    .error-section {
+        padding: 50px 0 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .error-title {
+        font-size: 48px;
+    }
+}
