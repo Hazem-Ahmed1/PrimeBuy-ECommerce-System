@@ -23,6 +23,14 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
+# Visual Studio / VSCode
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
 # .NET Core
 project.lock.json
 project.fragment.lock.json
