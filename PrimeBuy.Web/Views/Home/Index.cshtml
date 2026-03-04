@@ -1,5 +1,15 @@
-﻿@{
+﻿@model  List<Product>
+
+@{
     ViewData["Title"] = "Home";
+}
+
+@{
+    foreach(var item in  Model)
+    {
+        <td>@item.Name</td>
+        <td>@item.ProductImage</td>
+    }
 }
 
 @section Styles {

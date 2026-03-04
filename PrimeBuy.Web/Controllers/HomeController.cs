@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using PrimeBuy.Application.Interfaces.Repositories;
 using PrimeBuy.Web.Models;
 using System.Diagnostics;
 
@@ -6,9 +7,15 @@ namespace PrimeBuy.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        IProductRepository productRepository;
+        public HomeController(IProductRepository productRepository)
         {
-            return View();
+            this.productRepository = productRepository;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var items = await productRepository.GetAllAsync();
+            return View(items);
         }
         public new IActionResult NotFound()
         {
