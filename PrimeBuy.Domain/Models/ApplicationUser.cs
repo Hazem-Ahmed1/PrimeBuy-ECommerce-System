@@ -16,6 +16,7 @@ namespace PrimeBuy.Domain.Models
         public string LastName { get; set; }
         public ICollection<Address> Addresses { get; set; } = new HashSet<Address>();
         public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
+        public Cart Cart { get; set; }
 
 
 

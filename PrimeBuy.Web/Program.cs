@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using PrimeBuy.Application.Interfaces;
 using PrimeBuy.Application.Interfaces.Repositories;
+using PrimeBuy.Application.Interfaces.Services;
+using PrimeBuy.Application.Services;
 using PrimeBuy.Domain.Models;
 using PrimeBuy.Infrastructure.Data;
 using PrimeBuy.Infrastructure.Repositories;
@@ -29,9 +32,19 @@ namespace PrimeBuy.Web
             })
             .AddEntityFrameworkStores<AppDbContext>();
 
-
+            // Repos 
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+
+
+            // Services
+            builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

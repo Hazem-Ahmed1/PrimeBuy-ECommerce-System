@@ -14,6 +14,8 @@ namespace PrimeBuy.Infrastructure.Data
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
@@ -73,6 +75,27 @@ namespace PrimeBuy.Infrastructure.Data
                 .HasOne(c => c.ParentCategory)
                 .WithMany(c => c.ChildCategories)
                 .HasForeignKey(c => c.ParentCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Cart - ApplicationUser relationship (one-to-one)
+            builder.Entity<Cart>()
+                .HasOne(c => c.ApplicationUser)
+                .WithOne(u => u.Cart)
+                .HasForeignKey<Cart>(c => c.ApplicationUserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // CartItem - Cart relationship
+            builder.Entity<CartItem>()
+                .HasOne(ci => ci.Cart)
+                .WithMany(c => c.CartItems)
+                .HasForeignKey(ci => ci.CartId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // CartItem - Product relationship
+            builder.Entity<CartItem>()
+                .HasOne(ci => ci.Product)
+                .WithMany()
+                .HasForeignKey(ci => ci.ProductId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             // Seed data

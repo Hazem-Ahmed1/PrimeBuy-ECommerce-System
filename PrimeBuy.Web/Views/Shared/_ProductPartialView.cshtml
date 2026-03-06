@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Product>
+
+@foreach (var product in Model)
+{
+    <div class="col-6 col-md-4 col-lg-3">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="@product.ProductImageUrl" alt="Kids Car">
+                <div class="product-actions">
+                    <button class="action-btn"><i class="bi bi-heart"></i></button>
+                </div>
+                <button class="add-to-cart-btn">Add To Cart</button>
+            </div>
+            <div class="product-info">
+                <h5 class="product-name">@product.Name</h5>
+                <div class="product-price">
+                    <span class="current-price">$@product.Price</span>
+                </div>
+                <div class="product-rating">
+                    <div class="stars">
+                    @for(int i = 0; i < (int)product.Rating; i++)
+                    {
+                        <i class="bi bi-star-fill"></i>
+                    }
+                    </div>
+                    <span class="rating-count">@product.Rating</span>
+                </div>
+            </div>
+        </div>
+    </div>
+}
