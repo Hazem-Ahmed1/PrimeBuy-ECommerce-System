@@ -26,12 +26,14 @@ namespace PrimeBuy.Domain.Models
         public int StockQuantity { get; set; }
         [Required]
         public bool IsActive { get; set; }
+        [Range(0.0, 5.0, ErrorMessage = "Rating must be between 0 and 5")]
+        public double Rating { get; set; }
         public DateTime CreatedAt { get; set; }
         [ForeignKey(nameof(Category))]
         [Required]
         public int CategoryId { get; set; }
         public Category Category { get; set; }
-        public string ProductImage { get; set; }
+        public string ProductImageUrl { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; } = new HashSet<OrderItem>();
 
         public Product(string name, string sku, decimal price, int stockQuantity, int categoryId)
