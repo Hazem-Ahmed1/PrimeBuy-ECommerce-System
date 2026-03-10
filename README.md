@@ -4,11 +4,19 @@
 
 A full-featured e-commerce web application built with **ASP.NET Core MVC** following **Clean Architecture** principles. PrimeBuy offers a complete shopping experience with product browsing, cart management, order processing, and an admin dashboard.
 
-[![.NET](https://img.shields.io/badge/.NET_10-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
-[![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core_MVC-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://learn.microsoft.com/en-us/aspnet/core/)
-[![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)](https://www.microsoft.com/en-us/sql-server)
-[![EF Core](https://img.shields.io/badge/Entity_Framework_Core-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://learn.microsoft.com/en-us/ef/core/)
-[![Bootstrap](https://img.shields.io/badge/Bootstrap_5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
+## Tech Stack
+
+![C#](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=csharp&logoColor=white)
+![.NET 10](https://img.shields.io/badge/.NET_10-512BD4?style=flat-square&logo=dotnet&logoColor=white)
+![ASP.NET Core MVC](https://img.shields.io/badge/ASP.NET_Core_MVC-512BD4?style=flat-square&logo=dotnet&logoColor=white)
+![Entity Framework Core](https://img.shields.io/badge/EF_Core-512BD4?style=flat-square&logo=dotnet&logoColor=white)
+![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=flat-square&logo=microsoftsqlserver&logoColor=white)
+![ASP.NET Identity](https://img.shields.io/badge/ASP.NET_Identity-512BD4?style=flat-square&logo=dotnet&logoColor=white)
+![Bootstrap 5](https://img.shields.io/badge/Bootstrap_5-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![jQuery](https://img.shields.io/badge/jQuery-0769AD?style=flat-square&logo=jquery&logoColor=white)
 
 </div>
 
@@ -43,7 +51,7 @@ This project follows **Clean Architecture** (also known as Onion Architecture), 
 ├─────────────────────────────────────────────────────┤
 │              PrimeBuy.Infrastructure                │
 │            (Infrastructure Layer)                   │
-│  Repositories · DbContext · Services · Migrations   │
+│            Repositories · DbContext  · Migrations   │
 ├─────────────────────────────────────────────────────┤
 │              PrimeBuy.Application                   │
 │            (Application / Business Layer)           │
@@ -68,7 +76,7 @@ Web → Infrastructure → Application → Domain
 |-------|---------|----------------|
 | **Domain** | `PrimeBuy.Domain` | Entities (`Product`, `Category`, `Order`, `Cart`, etc.), Enums, no external dependencies |
 | **Application** | `PrimeBuy.Application` | Service interfaces, repository interfaces, business services (`ProductService`, `CategoryService`), UnitOfWork contract, DTOs |
-| **Infrastructure** | `PrimeBuy.Infrastructure` | EF Core `AppDbContext`, repository implementations, service implementations (`CartService`, `OrderService`), UnitOfWork, data seeding, migrations |
+| **Infrastructure** | `PrimeBuy.Infrastructure` | EF Core `AppDbContext`, repository implementations, , UnitOfWork, data seeding, migrations |
 | **Web** | `PrimeBuy.Web` | ASP.NET Core MVC controllers, Razor views, view models, DI configuration, Identity setup, admin area |
 
 
@@ -108,7 +116,7 @@ Web → Infrastructure → Application → Domain
 ## 🛠️ Tech Stack
 
 | Technology | Purpose |
-|:----------:|---------|
+|:-----------|:--------|
 | ![C#](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=csharp&logoColor=white) | Primary programming language |
 | ![.NET 10](https://img.shields.io/badge/.NET_10-512BD4?style=flat-square&logo=dotnet&logoColor=white) | Runtime framework |
 | ![ASP.NET Core MVC](https://img.shields.io/badge/ASP.NET_Core_MVC-512BD4?style=flat-square&logo=dotnet&logoColor=white) | Web framework (Controllers + Razor Views) |
@@ -120,6 +128,7 @@ Web → Infrastructure → Application → Domain
 | ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) | Styling |
 | ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) | Client-side interactivity & AJAX |
 | ![jQuery](https://img.shields.io/badge/jQuery-0769AD?style=flat-square&logo=jquery&logoColor=white) | DOM manipulation & AJAX calls |
+
 
 ---
 
