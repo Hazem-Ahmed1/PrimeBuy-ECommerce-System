@@ -22,7 +22,7 @@ A full-featured e-commerce web application built with **ASP.NET Core MVC** follo
 
 ---
 
-## 📖 Description
+## Description
 
 **PrimeBuy** is a modern, full-stack e-commerce platform designed for a seamless online shopping experience. It includes user authentication with role-based access control, a rich product catalog with filtering and sorting, a real-time shopping cart, a checkout flow with address management, order tracking, and a comprehensive admin panel for managing products, categories, and orders.
 
@@ -39,7 +39,7 @@ A full-featured e-commerce web application built with **ASP.NET Core MVC** follo
 
 ---
 
-## 🏗️ Project Architecture
+## Project Architecture
 
 This project follows **Clean Architecture** (also known as Onion Architecture), ensuring separation of concerns and a maintainable, testable codebase.
 
@@ -110,29 +110,9 @@ Web → Infrastructure → Application → Domain
 ### Admin Dashboard
 > ![Admin Dashboard](images/6.png)
 
-
 ---
 
-## 🛠️ Tech Stack
-
-| Technology | Purpose |
-|:-----------|:--------|
-| ![C#](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=csharp&logoColor=white) | Primary programming language |
-| ![.NET 10](https://img.shields.io/badge/.NET_10-512BD4?style=flat-square&logo=dotnet&logoColor=white) | Runtime framework |
-| ![ASP.NET Core MVC](https://img.shields.io/badge/ASP.NET_Core_MVC-512BD4?style=flat-square&logo=dotnet&logoColor=white) | Web framework (Controllers + Razor Views) |
-| ![Entity Framework Core](https://img.shields.io/badge/EF_Core-512BD4?style=flat-square&logo=dotnet&logoColor=white) | ORM — LINQ-based data access |
-| ![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=flat-square&logo=microsoftsqlserver&logoColor=white) | Relational database |
-| ![ASP.NET Identity](https://img.shields.io/badge/ASP.NET_Identity-512BD4?style=flat-square&logo=dotnet&logoColor=white) | Authentication & role-based authorization |
-| ![Bootstrap 5](https://img.shields.io/badge/Bootstrap_5-7952B3?style=flat-square&logo=bootstrap&logoColor=white) | Responsive front-end UI framework |
-| ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white) | Markup language |
-| ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) | Styling |
-| ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) | Client-side interactivity & AJAX |
-| ![jQuery](https://img.shields.io/badge/jQuery-0769AD?style=flat-square&logo=jquery&logoColor=white) | DOM manipulation & AJAX calls |
-
-
----
-
-## 🚀 How To Run
+##  How To Run
 
 ### Prerequisites
 
@@ -191,7 +171,7 @@ Web → Infrastructure → Application → Domain
 
 ---
 
-## 📁 Folder Structure
+##  Folder Structure
 
 ```
 PrimeBuy-ECommerce-System/
