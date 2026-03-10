@@ -1,5 +1,6 @@
+@model ProductDetailViewModel
 @{
-    ViewData["Title"] = "Product Details";
+    ViewData["Title"] = $"{Model.Name} - Product Details";
 }
 
 @section Styles {
@@ -15,7 +16,7 @@
             <span class="separator">/</span>
             <a asp-controller="Shop" asp-action="Index">Shop</a>
             <span class="separator">/</span>
-            <span class="current">Havic HV G-92 Gamepad</span>
+            <span class="current">@Model.Name</span>
         </nav>
 
         <div class="row">
@@ -23,21 +24,12 @@
             <div class="col-lg-7">
                 <div class="gallery-wrapper" data-animate="fade-left">
                     <div class="gallery-thumbs">
-                        <div class="thumb-item active" data-img="https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=500&h=500&fit=crop">
-                            <img src="https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=100&h=100&fit=crop" alt="Thumb 1">
-                        </div>
-                        <div class="thumb-item" data-img="https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=500&h=500&fit=crop">
-                            <img src="https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=100&h=100&fit=crop" alt="Thumb 2">
-                        </div>
-                        <div class="thumb-item" data-img="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=500&h=500&fit=crop">
-                            <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=100&h=100&fit=crop" alt="Thumb 3">
-                        </div>
-                        <div class="thumb-item" data-img="https://images.unsplash.com/photo-1625805866449-3589fe3f71a3?w=500&h=500&fit=crop">
-                            <img src="https://images.unsplash.com/photo-1625805866449-3589fe3f71a3?w=100&h=100&fit=crop" alt="Thumb 4">
+                        <div class="thumb-item active" data-img="@Model.ProductImageUrl">
+                            <img src="@Model.ProductImageUrl" alt="@Model.Name Thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
                         </div>
                     </div>
                     <div class="gallery-main">
-                        <img id="mainImage" src="https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=500&h=500&fit=crop" alt="Havic HV G-92 Gamepad">
+                        <img id="mainImage" src="@Model.ProductImageUrl" alt="@Model.Name" style="width: 100%; max-height: 500px; object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -45,52 +37,28 @@
             <!-- Product Info -->
             <div class="col-lg-5">
                 <div class="product-detail-info" data-animate="fade-right">
-                    <h1 class="product-detail-title">Havic HV G-92 Gamepad</h1>
+                    <h1 class="product-detail-title">@Model.Name</h1>
                     <div class="detail-rating">
                         <span class="stars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
+                            @Html.Raw(Model.GetStarRating())
                         </span>
-                        <span class="review-count">(150 Reviews)</span>
-                        <span class="stock-status">In Stock</span>
+                        <span class="review-count">(@Model.GetReviewCount() Reviews)</span>
+                        <span class="stock-status @(Model.IsInStock ? "in-stock" : "out-of-stock")">@Model.StockStatus</span>
                     </div>
-                    <p class="detail-price">$192.00</p>
-                    <p class="detail-description">PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.</p>
+                    <p class="detail-price">@Model.Price.ToString("C")</p>
 
-                    <!-- Colours -->
-                    <div class="option-row">
-                        <span class="option-label">Colours:</span>
-                        <div class="color-options">
-                            <span class="color-circle active" style="background:#e0e0e0;" data-color="silver"></span>
-                            <span class="color-circle" style="background:#DB4444;" data-color="red"></span>
+                    <div class="product-meta mb-4">
+                        <div class="meta-row">
+                            <strong>SKU:</strong> @Model.SKU
+                        </div>
+                        <div class="meta-row">
+                            <strong>Category:</strong> @Model.CategoryName
+                        </div>
+                        <div class="meta-row">
+                            <strong>Stock:</strong> @Model.StockQuantity units available
                         </div>
                     </div>
 
-                    <!-- Sizes -->
-                    <div class="option-row">
-                        <span class="option-label">Size:</span>
-                        <div class="size-options">
-                            <button class="size-btn">XS</button>
-                            <button class="size-btn">S</button>
-                            <button class="size-btn active">M</button>
-                            <button class="size-btn">L</button>
-                            <button class="size-btn">XL</button>
-                        </div>
-                    </div>
-
-                    <!-- Quantity + Buy Now + Wishlist -->
-                    <div class="qty-buy-row">
-                        <div class="qty-control">
-                            <button class="qty-btn minus">−</button>
-                            <input type="number" class="qty-value" value="2" min="1" max="99">
-                            <button class="qty-btn plus">+</button>
-                        </div>
-                        <button class="btn-buy-now">Buy Now</button>
-                        <button class="btn-wish-detail"><i class="bi bi-heart"></i></button>
-                    </div>
 
                     <!-- Delivery Info -->
                     <div class="delivery-box">
@@ -105,118 +73,8 @@
                             <i class="bi bi-arrow-repeat delivery-icon"></i>
                             <div class="delivery-info">
                                 <h6>Return Delivery</h6>
-                                <p>Free 30 Days Delivery Returns. <a href="#">Details</a></p>
+                                <p>Free 30 Days Delivery Returns.</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Related Items -->
-        <div class="related-section">
-            <div class="related-header">
-                <span class="related-marker"></span>
-                <span class="related-title">Related Item</span>
-            </div>
-
-            <div class="related-grid">
-                <!-- Card 1 -->
-                <div class="pd-card">
-                    <div class="pd-card-image">
-                        <span class="pd-badge">-40%</span>
-                        <div class="pd-actions">
-                            <button class="pd-action-btn"><i class="bi bi-heart"></i></button>
-                            <button class="pd-action-btn"><i class="bi bi-eye"></i></button>
-                        </div>
-                        <img src="https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=200&h=200&fit=crop" alt="HAVIT HV-G92 Gamepad">
-                        <button class="pd-add-cart">Add To Cart</button>
-                    </div>
-                    <div class="pd-card-info">
-                        <p class="pd-card-name">HAVIT HV-G92 Gamepad</p>
-                        <div class="pd-card-prices">
-                            <span class="pd-price-new">$120</span>
-                            <span class="pd-price-old">$160</span>
-                        </div>
-                        <div class="pd-card-rating">
-                            <span class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                            </span>
-                            <span class="count">(88)</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="pd-card">
-                    <div class="pd-card-image">
-                        <span class="pd-badge">-35%</span>
-                        <div class="pd-actions">
-                            <button class="pd-action-btn"><i class="bi bi-heart"></i></button>
-                            <button class="pd-action-btn"><i class="bi bi-eye"></i></button>
-                        </div>
-                        <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=200&h=200&fit=crop" alt="AK-900 Wired Keyboard">
-                        <button class="pd-add-cart">Add To Cart</button>
-                    </div>
-                    <div class="pd-card-info">
-                        <p class="pd-card-name">AK-900 Wired Keyboard</p>
-                        <div class="pd-card-prices">
-                            <span class="pd-price-new">$960</span>
-                            <span class="pd-price-old">$1160</span>
-                        </div>
-                        <div class="pd-card-rating">
-                            <span class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
-                            </span>
-                            <span class="count">(75)</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="pd-card">
-                    <div class="pd-card-image">
-                        <span class="pd-badge">-30%</span>
-                        <div class="pd-actions">
-                            <button class="pd-action-btn"><i class="bi bi-heart"></i></button>
-                            <button class="pd-action-btn"><i class="bi bi-eye"></i></button>
-                        </div>
-                        <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=200&h=200&fit=crop" alt="IPS LCD Gaming Monitor">
-                        <button class="pd-add-cart">Add To Cart</button>
-                    </div>
-                    <div class="pd-card-info">
-                        <p class="pd-card-name">IPS LCD Gaming Monitor</p>
-                        <div class="pd-card-prices">
-                            <span class="pd-price-new">$370</span>
-                            <span class="pd-price-old">$400</span>
-                        </div>
-                        <div class="pd-card-rating">
-                            <span class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                            </span>
-                            <span class="count">(99)</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 4 -->
-                <div class="pd-card">
-                    <div class="pd-card-image">
-                        <div class="pd-actions">
-                            <button class="pd-action-btn"><i class="bi bi-heart"></i></button>
-                            <button class="pd-action-btn"><i class="bi bi-eye"></i></button>
-                        </div>
-                        <img src="https://images.unsplash.com/photo-1587302912306-cf1ed9c33146?w=200&h=200&fit=crop" alt="RGB Liquid CPU Cooler">
-                        <button class="pd-add-cart">Add To Cart</button>
-                    </div>
-                    <div class="pd-card-info">
-                        <p class="pd-card-name">RGB Liquid CPU Cooler</p>
-                        <div class="pd-card-prices">
-                            <span class="pd-price-new">$160</span>
-                            <span class="pd-price-old">$170</span>
-                        </div>
-                        <div class="pd-card-rating">
-                            <span class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
-                            </span>
-                            <span class="count">(65)</span>
                         </div>
                     </div>
                 </div>

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PrimeBuy.Application.Interfaces.Repositories
+﻿namespace PrimeBuy.Application.Interfaces.Repositories
 {
     public interface IGenericRepository<T> where T : class
     {
@@ -11,7 +7,5 @@ namespace PrimeBuy.Application.Interfaces.Repositories
         Task AddAsync(T entity);
         void Update(T entity);
         void Delete(T entity);
-        Task SaveChanges();
-
     }
 }

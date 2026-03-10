@@ -32,7 +32,7 @@ namespace PrimeBuy.Domain.Models
         [ForeignKey(nameof(Category))]
         [Required]
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public Category Category { get; set; } = null!;
         public string ProductImageUrl { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; } = new HashSet<OrderItem>();
 

@@ -1,3 +1,5 @@
+@model EditAccountViewModel
+
 @{
     ViewData["Title"] = "My Account";
 }
@@ -11,11 +13,11 @@
         <!-- Breadcrumb -->
         <div class="d-flex justify-content-between align-items-center mb-5">
             <nav class="breadcrumb-nav">
-                <a href="index.html">Home</a>
+                <a asp-controller="Home" asp-action="Index">Home</a>
                 <span class="separator">/</span>
                 <span class="current">My Account</span>
             </nav>
-            <p class="welcome-text mb-0">Welcome! <span class="text-danger">Md Rimel</span></p>
+            <p class="welcome-text mb-0">Welcome! <span class="text-danger">@Model.FirstName @Model.LastName</span></p>
         </div>
 
         <div class="row g-4">
@@ -25,17 +27,7 @@
                     <h6 class="sidebar-title">Manage My Account</h6>
                     <ul class="sidebar-menu">
                         <li><a href="#" class="active">My Profile</a></li>
-                        <li><a href="#">Address Book</a></li>
-                        <li><a href="#">My Payment Options</a></li>
                     </ul>
-
-                    <h6 class="sidebar-title mt-4">My Orders</h6>
-                    <ul class="sidebar-menu">
-                        <li><a href="#">My Returns</a></li>
-                        <li><a href="#">My Cancellations</a></li>
-                    </ul>
-
-                    <h6 class="sidebar-title mt-4">My WishList</h6>
                 </div>
             </div>
 
@@ -43,51 +35,80 @@
             <div class="col-lg-9">
                 <div class="profile-card" data-animate="fade-right">
                     <h5 class="profile-card-title">Edit Your Profile</h5>
-                    <form id="profileForm">
+                    
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show">
+                            @TempData["Success"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    }
+                    
+                    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+                    
+                    <form asp-action="Index" method="post">
                         <div class="row g-4">
                             <div class="col-md-6">
                                 <div class="form-field">
-                                    <label>First Name</label>
-                                    <input type="text" class="form-control" value="Md" placeholder="First Name">
+                                    <label asp-for="FirstName"></label>
+                                    <input class="form-control" asp-for="FirstName">
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-field">
-                                    <label>Last Name</label>
-                                    <input type="text" class="form-control" value="Rimel" placeholder="Last Name">
+                                    <label asp-for="MiddleName"></label>
+                                    <input class="form-control" asp-for="MiddleName">
+                                    <span asp-validation-for="MiddleName" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-field">
-                                    <label>Email</label>
-                                    <input type="email" class="form-control" value="rimel1111@gmail.com" placeholder="Email">
+                                    <label asp-for="LastName"></label>
+                                    <input class="form-control" asp-for="LastName">
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-field">
-                                    <label>Address</label>
-                                    <input type="text" class="form-control" value="Kingston, 5236, United State" placeholder="Address">
+                                    <label asp-for="Email"></label>
+                                    <input class="form-control" asp-for="Email">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-field">
+                                    <label asp-for="PhoneNumber"></label>
+                                    <input class="form-control" asp-for="PhoneNumber">
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Password Change -->
                         <div class="password-section mt-4">
-                            <h6 class="password-title">Password Changes</h6>
+                            <h6 class="password-title">Password Changes (Optional)</h6>
+                            <p class="text-muted small">Leave blank to keep current password</p>
                             <div class="row g-4">
                                 <div class="col-12">
                                     <div class="form-field">
-                                        <input type="password" class="form-control" placeholder="Current Password">
+                                        <label asp-for="OldPassword"></label>
+                                        <input class="form-control" asp-for="OldPassword" placeholder="Enter current password">
+                                        <span asp-validation-for="OldPassword" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-field">
-                                        <input type="password" class="form-control" placeholder="New Password">
+                                        <label asp-for="Password"></label>
+                                        <input class="form-control" asp-for="Password" placeholder="Enter new password">
+                                        <span asp-validation-for="Password" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-field">
-                                        <input type="password" class="form-control" placeholder="Confirm New Password">
+                                        <label asp-for="ConfirmPassword"></label>
+                                        <input class="form-control" asp-for="ConfirmPassword" placeholder="Confirm new password">
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +116,7 @@
 
                         <!-- Buttons -->
                         <div class="d-flex justify-content-end align-items-center gap-3 mt-4">
-                            <button type="button" class="btn-cancel">Cancel</button>
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
                             <button type="submit" class="btn-primary-custom">Save Changes</button>
                         </div>
                     </form>
@@ -106,4 +127,5 @@
 </section>
 @section PageJS {
     <script src="~/js/account.js"></script>
+    <partial name="_ValidationScriptsPartial" />
 }

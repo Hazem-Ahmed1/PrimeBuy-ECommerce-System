@@ -1,3 +1,5 @@
+@model ShopVM
+
 @{
     ViewData["Title"] = "Shop";
 }
@@ -12,7 +14,7 @@
 
         <!-- Breadcrumb -->
         <nav class="breadcrumb-nav mb-4">
-            <a href="index.html">Home</a>
+            <a asp-controller="Home" asp-action="Index">Home</a>
             <span class="separator">/</span>
             <span class="current">Shop</span>
         </nav>
@@ -42,117 +44,14 @@
                         Category <i class="bi bi-chevron-down"></i>
                     </div>
                     <ul class="filter-list filter-body">
-                        <li><a href="#" class="active">Woman's Fashion <span class="count">(324)</span></a></li>
-                        <li><a href="#">Men's Fashion <span class="count">(218)</span></a></li>
-                        <li><a href="#">Electronics <span class="count">(156)</span></a></li>
-                        <li><a href="#">Home & Lifestyle <span class="count">(89)</span></a></li>
-                        <li><a href="#">Medicine <span class="count">(43)</span></a></li>
-                        <li><a href="#">Sports & Outdoor <span class="count">(67)</span></a></li>
-                        <li><a href="#">Baby's & Toys <span class="count">(92)</span></a></li>
-                        <li><a href="#">Groceries & Pets <span class="count">(54)</span></a></li>
-                        <li><a href="#">Health & Beauty <span class="count">(113)</span></a></li>
+                        <li><a href="#" onclick="loadCategory(null); return false;" class="@(Model.CategoryId == null ? "active" : "")" data-category-id="">All Products <span class="count">(@Model.TotalProductsCount)</span></a></li>
+                        @foreach (var category in Model.ParentCategories)
+                        {
+                            var count = Model.CategoryProductCounts.ContainsKey(category.Id) ? Model.CategoryProductCounts[category.Id] : 0;
+                            <li><a href="#" onclick="loadCategory(@category.Id); return false;" class="@(Model.CategoryId == category.Id ? "active" : "")" data-category-id="@category.Id">@category.Name <span class="count">(@count)</span></a></li>
+                        }
                     </ul>
                 </div>
-
-                <!-- Price Range -->
-                <div class="filter-group">
-                    <div class="filter-group-title" data-toggle="filter">
-                        Price <i class="bi bi-chevron-down"></i>
-                    </div>
-                    <div class="price-range-wrapper filter-body">
-                        <input type="range" class="price-slider" id="priceRange" min="0" max="2000" value="1500">
-                        <div class="price-labels">
-                            <span>$0</span>
-                            <span id="priceValue">$1500</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Brand -->
-                <div class="filter-group">
-                    <div class="filter-group-title" data-toggle="filter">
-                        Brand <i class="bi bi-chevron-down"></i>
-                    </div>
-                    <div class="filter-body">
-                        <label class="filter-check"><input type="checkbox" checked> Samsung</label>
-                        <label class="filter-check"><input type="checkbox"> Apple</label>
-                        <label class="filter-check"><input type="checkbox"> Xiaomi</label>
-                        <label class="filter-check"><input type="checkbox"> Sony</label>
-                        <label class="filter-check"><input type="checkbox"> LG</label>
-                        <label class="filter-check"><input type="checkbox"> HAVIT</label>
-                    </div>
-                </div>
-
-                <!-- Colour -->
-                <div class="filter-group">
-                    <div class="filter-group-title" data-toggle="filter">
-                        Colour <i class="bi bi-chevron-down"></i>
-                    </div>
-                    <div class="color-filter-list filter-body">
-                        <span class="color-swatch active" style="background:#000;"></span>
-                        <span class="color-swatch" style="background:#DB4444;"></span>
-                        <span class="color-swatch" style="background:#FFAD33;"></span>
-                        <span class="color-swatch" style="background:#00FF66;"></span>
-                        <span class="color-swatch" style="background:#2F80ED;"></span>
-                        <span class="color-swatch" style="background:#A259FF;"></span>
-                        <span class="color-swatch" style="background:#E0E0E0;"></span>
-                        <span class="color-swatch" style="background:#FF6F91;"></span>
-                    </div>
-                </div>
-
-                <!-- Size -->
-                <div class="filter-group">
-                    <div class="filter-group-title" data-toggle="filter">
-                        Size <i class="bi bi-chevron-down"></i>
-                    </div>
-                    <div class="filter-body">
-                        <label class="filter-check"><input type="checkbox"> XS</label>
-                        <label class="filter-check"><input type="checkbox" checked> S</label>
-                        <label class="filter-check"><input type="checkbox" checked> M</label>
-                        <label class="filter-check"><input type="checkbox"> L</label>
-                        <label class="filter-check"><input type="checkbox"> XL</label>
-                        <label class="filter-check"><input type="checkbox"> XXL</label>
-                    </div>
-                </div>
-
-                <!-- Rating -->
-                <div class="filter-group">
-                    <div class="filter-group-title" data-toggle="filter">
-                        Rating <i class="bi bi-chevron-down"></i>
-                    </div>
-                    <div class="filter-body">
-                        <label class="rating-filter-item">
-                            <input type="checkbox">
-                            <span class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                            </span>
-                        </label>
-                        <label class="rating-filter-item">
-                            <input type="checkbox" checked>
-                            <span class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star empty"></i>
-                            </span>
-                            & Up
-                        </label>
-                        <label class="rating-filter-item">
-                            <input type="checkbox">
-                            <span class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star empty"></i><i class="bi bi-star empty"></i>
-                            </span>
-                            & Up
-                        </label>
-                        <label class="rating-filter-item">
-                            <input type="checkbox">
-                            <span class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star empty"></i><i class="bi bi-star empty"></i><i class="bi bi-star empty"></i>
-                            </span>
-                            & Up
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Apply -->
-                <button class="btn-apply-filter" id="applyFilterBtn">Apply Filters</button>
 
             </aside>
 
@@ -161,17 +60,17 @@
 
                 <!-- Toolbar -->
                 <div class="shop-toolbar">
-                    <p class="shop-result-count mb-0">Showing <strong>1–12</strong> of <strong>156</strong> results</p>
+                    <p class="shop-result-count mb-0">Showing <strong>@Model.StartItem–@Model.EndItem</strong> of <strong>@Model.TotalProductsCount</strong> results</p>
                     <div class="shop-toolbar-right">
                         <div class="shop-sort">
                             <label>Sort by:</label>
-                            <select id="sortSelect">
-                                <option value="default">Default</option>
-                                <option value="price-low">Price: Low to High</option>
-                                <option value="price-high">Price: High to Low</option>
-                                <option value="newest">Newest</option>
-                                <option value="rating">Best Rating</option>
-                                <option value="popular">Popularity</option>
+                            <select id="sortSelect" onchange="applySorting()">
+                                <option value="default" selected="@(Model.SortBy == "default")">Default</option>
+                                <option value="price-low" selected="@(Model.SortBy == "price-low")">Price: Low to High</option>
+                                <option value="price-high" selected="@(Model.SortBy == "price-high")">Price: High to Low</option>
+                                <option value="newest" selected="@(Model.SortBy == "newest")">Newest</option>
+                                <option value="rating" selected="@(Model.SortBy == "rating")">Best Rating</option>
+                                <option value="popular" selected="@(Model.SortBy == "popular")">Popularity</option>
                             </select>
                         </div>
                         <div class="view-toggle">
@@ -181,301 +80,16 @@
                     </div>
                 </div>
 
-                <!-- Products Grid -->
-                <div class="products-grid" id="productsGrid">
-
-                    <!-- Card 1 -->
-                    <div class="shop-card">
-                        <div class="shop-card-image">
-                            <span class="shop-badge discount">-40%</span>
-                            <div class="shop-actions">
-                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
-                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=200&h=200&fit=crop" alt="HAVIT HV-G92 Gamepad">
-                            <button class="shop-add-cart">Add To Cart</button>
-                        </div>
-                        <div class="shop-card-info">
-                            <p class="shop-card-name"><a href="product.html">HAVIT HV-G92 Gamepad</a></p>
-                            <div class="shop-card-prices">
-                                <span class="shop-price-new">$120</span>
-                                <span class="shop-price-old">$160</span>
-                            </div>
-                            <div class="shop-card-rating">
-                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
-                                <span class="count">(88)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="shop-card">
-                        <div class="shop-card-image">
-                            <span class="shop-badge discount">-35%</span>
-                            <div class="shop-actions">
-                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
-                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=200&h=200&fit=crop" alt="AK-900 Wired Keyboard">
-                            <button class="shop-add-cart">Add To Cart</button>
-                        </div>
-                        <div class="shop-card-info">
-                            <p class="shop-card-name"><a href="product.html">AK-900 Wired Keyboard</a></p>
-                            <div class="shop-card-prices">
-                                <span class="shop-price-new">$960</span>
-                                <span class="shop-price-old">$1160</span>
-                            </div>
-                            <div class="shop-card-rating">
-                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
-                                <span class="count">(75)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="shop-card">
-                        <div class="shop-card-image">
-                            <span class="shop-badge discount">-30%</span>
-                            <div class="shop-actions">
-                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
-                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=200&h=200&fit=crop" alt="IPS LCD Gaming Monitor">
-                            <button class="shop-add-cart">Add To Cart</button>
-                        </div>
-                        <div class="shop-card-info">
-                            <p class="shop-card-name"><a href="product.html">IPS LCD Gaming Monitor</a></p>
-                            <div class="shop-card-prices">
-                                <span class="shop-price-new">$370</span>
-                                <span class="shop-price-old">$400</span>
-                            </div>
-                            <div class="shop-card-rating">
-                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
-                                <span class="count">(99)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="shop-card">
-                        <div class="shop-card-image">
-                            <span class="shop-badge new">NEW</span>
-                            <div class="shop-actions">
-                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
-                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1587302912306-cf1ed9c33146?w=200&h=200&fit=crop" alt="RGB Liquid CPU Cooler">
-                            <button class="shop-add-cart">Add To Cart</button>
-                        </div>
-                        <div class="shop-card-info">
-                            <p class="shop-card-name"><a href="product.html">RGB Liquid CPU Cooler</a></p>
-                            <div class="shop-card-prices">
-                                <span class="shop-price-new">$160</span>
-                                <span class="shop-price-old">$170</span>
-                            </div>
-                            <div class="shop-card-rating">
-                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
-                                <span class="count">(65)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 5 -->
-                    <div class="shop-card">
-                        <div class="shop-card-image">
-                            <div class="shop-actions">
-                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
-                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=200&h=200&fit=crop" alt="Gucci Duffle Bag">
-                            <button class="shop-add-cart">Add To Cart</button>
-                        </div>
-                        <div class="shop-card-info">
-                            <p class="shop-card-name"><a href="product.html">Gucci Duffle Bag</a></p>
-                            <div class="shop-card-prices">
-                                <span class="shop-price-new">$960</span>
-                                <span class="shop-price-old">$1160</span>
-                            </div>
-                            <div class="shop-card-rating">
-                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
-                                <span class="count">(65)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 6 -->
-                    <div class="shop-card">
-                        <div class="shop-card-image">
-                            <span class="shop-badge discount">-25%</span>
-                            <div class="shop-actions">
-                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
-                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop" alt="S-Series Comfort Chair">
-                            <button class="shop-add-cart">Add To Cart</button>
-                        </div>
-                        <div class="shop-card-info">
-                            <p class="shop-card-name"><a href="product.html">Small BookSelf</a></p>
-                            <div class="shop-card-prices">
-                                <span class="shop-price-new">$360</span>
-                            </div>
-                            <div class="shop-card-rating">
-                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
-                                <span class="count">(65)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 7 -->
-                    <div class="shop-card">
-                        <div class="shop-card-image">
-                            <span class="shop-badge new">NEW</span>
-                            <div class="shop-actions">
-                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
-                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop" alt="Breed Dry Dog Food">
-                            <button class="shop-add-cart">Add To Cart</button>
-                        </div>
-                        <div class="shop-card-info">
-                            <p class="shop-card-name"><a href="product.html">Breed Dry Dog Food</a></p>
-                            <div class="shop-card-prices">
-                                <span class="shop-price-new">$100</span>
-                            </div>
-                            <div class="shop-card-rating">
-                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><i class="bi bi-star"></i></span>
-                                <span class="count">(35)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 8 -->
-                    <div class="shop-card">
-                        <div class="shop-card-image">
-                            <span class="shop-badge discount">-15%</span>
-                            <div class="shop-actions">
-                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
-                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=200&h=200&fit=crop" alt="CANON EOS DSLR Camera">
-                            <button class="shop-add-cart">Add To Cart</button>
-                        </div>
-                        <div class="shop-card-info">
-                            <p class="shop-card-name"><a href="product.html">CANON EOS DSLR Camera</a></p>
-                            <div class="shop-card-prices">
-                                <span class="shop-price-new">$360</span>
-                                <span class="shop-price-old">$400</span>
-                            </div>
-                            <div class="shop-card-rating">
-                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
-                                <span class="count">(95)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 9 -->
-                    <div class="shop-card">
-                        <div class="shop-card-image">
-                            <div class="shop-actions">
-                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
-                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=200&h=200&fit=crop" alt="ASUS FHD Gaming Laptop">
-                            <button class="shop-add-cart">Add To Cart</button>
-                        </div>
-                        <div class="shop-card-info">
-                            <p class="shop-card-name"><a href="product.html">ASUS FHD Gaming Laptop</a></p>
-                            <div class="shop-card-prices">
-                                <span class="shop-price-new">$700</span>
-                            </div>
-                            <div class="shop-card-rating">
-                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
-                                <span class="count">(325)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 10 -->
-                    <div class="shop-card">
-                        <div class="shop-card-image">
-                            <span class="shop-badge discount">-20%</span>
-                            <div class="shop-actions">
-                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
-                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=200&h=200&fit=crop" alt="Curology Product Set">
-                            <button class="shop-add-cart">Add To Cart</button>
-                        </div>
-                        <div class="shop-card-info">
-                            <p class="shop-card-name"><a href="product.html">Curology Product Set</a></p>
-                            <div class="shop-card-prices">
-                                <span class="shop-price-new">$500</span>
-                                <span class="shop-price-old">$600</span>
-                            </div>
-                            <div class="shop-card-rating">
-                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
-                                <span class="count">(145)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 11 -->
-                    <div class="shop-card">
-                        <div class="shop-card-image">
-                            <div class="shop-actions">
-                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
-                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop" alt="Kids Electric Car">
-                            <button class="shop-add-cart">Add To Cart</button>
-                        </div>
-                        <div class="shop-card-info">
-                            <p class="shop-card-name"><a href="product.html">Kids Electric Car</a></p>
-                            <div class="shop-card-prices">
-                                <span class="shop-price-new">$960</span>
-                            </div>
-                            <div class="shop-card-rating">
-                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
-                                <span class="count">(65)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 12 -->
-                    <div class="shop-card">
-                        <div class="shop-card-image">
-                            <span class="shop-badge discount">-10%</span>
-                            <div class="shop-actions">
-                                <button class="shop-action-btn wish-btn"><i class="bi bi-heart"></i></button>
-                                <button class="shop-action-btn"><i class="bi bi-eye"></i></button>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=200&h=200&fit=crop" alt="Jr. Zoom Soccer Cleats">
-                            <button class="shop-add-cart">Add To Cart</button>
-                        </div>
-                        <div class="shop-card-info">
-                            <p class="shop-card-name"><a href="product.html">Jr. Zoom Soccer Cleats</a></p>
-                            <div class="shop-card-prices">
-                                <span class="shop-price-new">$1160</span>
-                                <span class="shop-price-old">$1260</span>
-                            </div>
-                            <div class="shop-card-rating">
-                                <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
-                                <span class="count">(35)</span>
-                            </div>
-                        </div>
-                    </div>
-
+                <!-- Products Container -->
+                <div id="productsContainer">
+                    @await Html.PartialAsync("_ProductsListPartial", Model)
                 </div>
 
-                <!-- Pagination -->
-                <div class="shop-pagination">
-                    <button class="page-btn disabled"><i class="bi bi-chevron-left"></i></button>
-                    <button class="page-btn active">1</button>
-                    <button class="page-btn">2</button>
-                    <button class="page-btn">3</button>
-                    <button class="page-btn">...</button>
-                    <button class="page-btn">13</button>
-                    <button class="page-btn"><i class="bi bi-chevron-right"></i></button>
+                <!-- Loading Indicator -->
+                <div id="loadingIndicator" style="display: none; text-align: center; padding: 20px;">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
                 </div>
 
             </div>
@@ -485,4 +99,95 @@
 
 @section PageJS {
     <script src="~/js/shop.js"></script>
+    <script>
+        // Current filter state
+        let currentFilters = {
+            categoryId: @(Model.CategoryId?.ToString() ?? "null"),
+            searchTerm: '@Html.Raw(Model.SearchTerm ?? "")',
+            sortBy: '@Model.SortBy'
+        };
+
+        // Load category products via AJAX
+        function loadCategory(categoryId) {
+            currentFilters.categoryId = categoryId;
+            currentFilters.page = 1; // Reset to first page
+            loadProducts(1);
+            updateCategoryActiveState(categoryId);
+        }
+
+        // Load products with current filters
+        function loadProducts(page = 1) {
+            showLoading(true);
+            
+            const params = new URLSearchParams({
+                page: page,
+                pageSize: 12
+            });
+            
+            // Add filters only if they have values
+            if (currentFilters.categoryId !== null) params.append('categoryId', currentFilters.categoryId);
+            if (currentFilters.searchTerm) params.append('searchTerm', currentFilters.searchTerm);
+            if (currentFilters.sortBy) params.append('sortBy', currentFilters.sortBy);
+
+            fetch(`@Url.Action("LoadProducts", "Shop")?${params.toString()}`, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('productsContainer').innerHTML = html;
+                showLoading(false);
+                updateUrl();
+            })
+            .catch(error => {
+                console.error('Error loading products:', error);
+                showLoading(false);
+            });
+        }
+
+        // Update URL without page refresh
+        function updateUrl() {
+            const params = new URLSearchParams();
+            
+            if (currentFilters.categoryId !== null) params.append('categoryId', currentFilters.categoryId);
+            if (currentFilters.searchTerm) params.append('searchTerm', currentFilters.searchTerm);
+            if (currentFilters.sortBy && currentFilters.sortBy !== 'default') params.append('sortBy', currentFilters.sortBy);
+
+            const newUrl = `${window.location.pathname}${params.toString() ? '?' + params.toString() : ''}`;
+            window.history.pushState({}, '', newUrl);
+        }
+
+        // Update category active state
+        function updateCategoryActiveState(categoryId) {
+            document.querySelectorAll('.filter-list a').forEach(link => {
+                link.classList.remove('active');
+                const linkCategoryId = link.getAttribute('data-category-id');
+                if ((categoryId === null && linkCategoryId === '') || 
+                    (categoryId !== null && linkCategoryId == categoryId)) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Show/hide loading indicator
+        function showLoading(show) {
+            document.getElementById('loadingIndicator').style.display = show ? 'block' : 'none';
+            document.getElementById('productsContainer').style.opacity = show ? '0.5' : '1';
+        }
+
+        // Apply sorting when dropdown changes
+        function applySorting() {
+            const sortValue = document.getElementById('sortSelect').value;
+            currentFilters.sortBy = sortValue;
+            loadProducts(1);
+        }
+
+        // Search functionality
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value;
+            currentFilters.searchTerm = searchTerm;
+            loadProducts(1);
+        }
+    </script>
 }

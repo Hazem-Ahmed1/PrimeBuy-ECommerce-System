@@ -1,9 +1,31 @@
+@model IEnumerable<PrimeBuy.Domain.Models.Category>
+
 @{
     ViewData["Title"] = "Categories";
 }
 
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show">
+        @TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show">
+        <strong>@TempData["Error"]</strong>
+        @if (TempData["ErrorDetails"] != null)
+        {
+            <br><small>@TempData["ErrorDetails"]</small>
+        }
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h4>Categories</h4>
+    <h4>Categories (@Model.Count())</h4>
     <a asp-area="Admin" asp-controller="Category" asp-action="Create" class="btn btn-danger">
         <i class="bi bi-plus-lg me-1"></i> Add Category
     </a>
@@ -15,27 +37,161 @@
             <thead class="table-light">
                 <tr>
                     <th>#</th>
+                    <th>Image</th>
                     <th>Name</th>
-                    <th>Products Count</th>
+                    <th>Parent</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Categories will be loaded dynamically from backend -->
-                <tr>
-                    <td>1</td>
-                    <td>Electronics</td>
-                    <td>42</td>
-                    <td>
-                        <a asp-area="Admin" asp-controller="Category" asp-action="Edit" asp-route-id="1" class="btn btn-sm btn-outline-primary">
-                            <i class="bi bi-pencil"></i>
-                        </a>
-                        <button class="btn btn-sm btn-outline-danger">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.CategoryImage))
+                            {
+                                <img src="@item.CategoryImage" class="rounded" style="width:40px;height:40px;object-fit:cover;" alt="@item.Name">
+                            }
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@(item.ParentCategoryId.HasValue ? item.ParentCategory?.Name ?? "—" : "Root")</td>
+                        <td>
+                            <a asp-area="Admin" asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary" title="Edit Category">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                            <button type="button" class="btn btn-sm btn-outline-danger" title="Delete Category" onclick="confirmDeletion(@item.Id, '@item.Name')">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                            <form asp-area="Admin" asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" method="post" style="display:none;" id="deleteForm_@item.Id">
+                                @Html.AntiForgeryToken()
+                            </form>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
 </div>
+
+<!-- Smart Deletion Confirmation Modal -->
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Category Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="deleteModalContent">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Checking...</span>
+                        </div>
+                    </div>
+                    <p class="text-center mt-2">Checking category dependencies...</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn" style="display:none;" onclick="executeDelete()">Delete Category</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        let currentCategoryId = 0;
+        
+        async function confirmDeletion(categoryId, categoryName) {
+            currentCategoryId = categoryId;
+            
+            // Show modal with loading state
+            const modal = new bootstrap.Modal(document.getElementById('deleteConfirmationModal'));
+            const modalContent = document.getElementById('deleteModalContent');
+            const confirmBtn = document.getElementById('confirmDeleteBtn');
+            
+            // Reset modal state
+            modalContent.innerHTML = `
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Checking...</span>
+                    </div>
+                </div>
+                <p class="text-center mt-2">Checking category dependencies...</p>
+            `;
+            confirmBtn.style.display = 'none';
+            
+            modal.show();
+            
+            try {
+                // Check deletion dependencies
+                const response = await fetch(`/Admin/Category/CheckDeletion/${categoryId}`);
+                const result = await response.json();
+                
+                if (result.canDelete) {
+                    // Safe to delete
+                    modalContent.innerHTML = `
+                        <div class="alert alert-success">
+                            <i class="bi bi-check-circle me-2"></i>
+                            <strong>Safe to Delete</strong>
+                        </div>
+                        <p>Are you sure you want to delete the category <strong>"${result.categoryName}"</strong>?</p>
+                        <p class="text-muted small">This action cannot be undone.</p>
+                    `;
+                    confirmBtn.style.display = 'inline-block';
+                    confirmBtn.textContent = 'Delete Category';
+                    confirmBtn.className = 'btn btn-danger';
+                } else {
+                    // Cannot delete - show dependencies
+                    let dependencyDetails = '';
+                    
+                    if (result.hasProducts) {
+                        dependencyDetails += `<li><i class="bi bi-box me-2"></i>${result.productsCount} product(s) are assigned to this category</li>`;
+                    }
+                    
+                    if (result.hasChildren) {
+                        dependencyDetails += `<li><i class="bi bi-folder me-2"></i>${result.childrenCount} child categor${result.childrenCount === 1 ? 'y' : 'ies'}</li>`;
+                    }
+                    
+                    modalContent.innerHTML = `
+                        <div class="alert alert-warning">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            <strong>Cannot Delete Category</strong>
+                        </div>
+                        <p>The category <strong>"${result.categoryName}"</strong> cannot be deleted because it has the following dependencies:</p>
+                        <ul class="list-unstyled">
+                            ${dependencyDetails}
+                        </ul>
+                        <div class="alert alert-info">
+                            <small>
+                                <strong>What to do:</strong><br>
+                                • Move products to another category from the Products management page<br>
+                                • Delete or move child categories first<br>
+                                • Then try deleting this category again
+                            </small>
+                        </div>
+                    `;
+                    confirmBtn.style.display = 'none';
+                }
+            } catch (error) {
+                modalContent.innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        <strong>Error</strong>
+                    </div>
+                    <p>Failed to check category dependencies. Please try again.</p>
+                    <p class="text-muted small">Error: ${error.message}</p>
+                `;
+                confirmBtn.style.display = 'none';
+            }
+        }
+        
+        function executeDelete() {
+            if (currentCategoryId > 0) {
+                document.getElementById(`deleteForm_${currentCategoryId}`).submit();
+            }
+        }
+    </script>
+}

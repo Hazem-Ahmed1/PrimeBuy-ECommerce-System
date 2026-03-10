@@ -47,6 +47,22 @@ namespace PrimeBuy.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "admin-role",
+                            ConcurrencyStamp = "8bd9d69a-71a6-46b6-8cfc-646fd4c6bdcf",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "user-role",
+                            ConcurrencyStamp = "338030d0-043a-4b20-800a-f92860ab0aa2",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -134,6 +150,58 @@ namespace PrimeBuy.Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "u1",
+                            RoleId = "admin-role"
+                        },
+                        new
+                        {
+                            UserId = "u2",
+                            RoleId = "user-role"
+                        },
+                        new
+                        {
+                            UserId = "u3",
+                            RoleId = "user-role"
+                        },
+                        new
+                        {
+                            UserId = "u4",
+                            RoleId = "user-role"
+                        },
+                        new
+                        {
+                            UserId = "u5",
+                            RoleId = "user-role"
+                        },
+                        new
+                        {
+                            UserId = "u6",
+                            RoleId = "user-role"
+                        },
+                        new
+                        {
+                            UserId = "u7",
+                            RoleId = "user-role"
+                        },
+                        new
+                        {
+                            UserId = "u8",
+                            RoleId = "user-role"
+                        },
+                        new
+                        {
+                            UserId = "u9",
+                            RoleId = "user-role"
+                        },
+                        new
+                        {
+                            UserId = "u10",
+                            RoleId = "user-role"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

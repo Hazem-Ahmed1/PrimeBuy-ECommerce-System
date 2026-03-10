@@ -1,0 +1,99 @@
+@model PrimeBuy.Domain.Models.Order
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/cart.css">
+}
+
+<section class="section-padding">
+    <div class="container">
+        <nav class="breadcrumb-nav mb-4">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <span class="separator">/</span>
+            <a asp-controller="Order" asp-action="Index">My Orders</a>
+            <span class="separator">/</span>
+            <span class="current">@Model.OrderNumber</span>
+        </nav>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Order #@Model.OrderNumber</h5>
+                        @{
+                            var badgeClass = Model.Status switch
+                            {
+                                PrimeBuy.Domain.Enums.OrderStatus.Pending => "bg-warning text-dark",
+                                PrimeBuy.Domain.Enums.OrderStatus.Paid => "bg-info",
+                                PrimeBuy.Domain.Enums.OrderStatus.Shipped => "bg-primary",
+                                PrimeBuy.Domain.Enums.OrderStatus.Completed => "bg-success",
+                                PrimeBuy.Domain.Enums.OrderStatus.Cancelled => "bg-danger",
+                                _ => "bg-secondary"
+                            };
+                        }
+                        <span class="badge @badgeClass fs-6">@Model.Status</span>
+                    </div>
+                    <div class="card-body p-0">
+                        <table class="table mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Qty</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.OrderItems)
+                                {
+                                    <tr>
+                                        <td class="d-flex align-items-center gap-2">
+                                            <img src="@item.Product.ProductImageUrl" alt="@item.Product.Name" style="width:45px;height:45px;object-fit:cover;border-radius:4px;">
+                                            @item.Product.Name
+                                        </td>
+                                        <td>$@item.UnitPrice.ToString("F2")</td>
+                                        <td>@item.Quantity</td>
+                                        <td>$@((item.UnitPrice * item.Quantity).ToString("F2"))</td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr class="fw-bold">
+                                    <td colspan="3" class="text-end">Total:</td>
+                                    <td>$@Model.TotalAmount.ToString("F2")</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-white"><h6 class="mb-0">Order Info</h6></div>
+                    <div class="card-body">
+                        <p><strong>Date:</strong> @Model.OrderDate.ToString("MMM dd, yyyy hh:mm tt")</p>
+                        <p class="mb-0"><strong>Order Number:</strong> @Model.OrderNumber</p>
+                    </div>
+                </div>
+
+                @if (Model.Address != null)
+                {
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white"><h6 class="mb-0">Shipping Address</h6></div>
+                        <div class="card-body">
+                            <p>@Model.Address.Street</p>
+                            <p>@Model.Address.City, @Model.Address.ZipCode</p>
+                            <p class="mb-0">@Model.Address.Country</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <a asp-action="Index" class="btn btn-outline-dark mt-3"><i class="bi bi-arrow-left me-1"></i> Back to Orders</a>
+    </div>
+</section>

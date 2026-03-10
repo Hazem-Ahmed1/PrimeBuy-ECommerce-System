@@ -1,8 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using PrimeBuy.Application.Interfaces;
-using PrimeBuy.Application.Interfaces.Repositories;
 using PrimeBuy.Application.Interfaces.Services;
-using PrimeBuy.Application.Services;
 using PrimeBuy.Web.Models;
 using PrimeBuy.Web.ViewModels;
 using System.Diagnostics;
@@ -11,39 +8,42 @@ namespace PrimeBuy.Web.Controllers
 {
     public class HomeController : Controller
     {
-        IProductService productService;
-        ICategoryService categoryService;
+        private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
+
         public HomeController(IProductService productService, ICategoryService categoryService)
         {
-            this.productService = productService;
-            this.categoryService = categoryService;
+            _productService = productService;
+            _categoryService = categoryService;
         }
+
         public async Task<IActionResult> Index(int page = 1)
         {
             int pageSize = 8;
-            var products = await productService.GetAllAsync();
-            var pagedProducts = products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var products = await _productService.GetAllAsync();
+            var totalCount = products.Count();
 
-            var HomeVM = new HomeVM()
+            var homeVM = new HomeVM()
             {
-                HighestRateProducts = await productService.getHighRateProductsAsync(),
-                ParentCategories = await categoryService.getAllParentCategoriesAsync(),
-                BestSales = await productService.getBestSalesAsync(),
+                HighestRateProducts = await _productService.getHighRateProductsAsync(),
+                ParentCategories = await _categoryService.getAllParentCategoriesAsync(),
+                BestSales = await _productService.getBestSalesAsync(),
             };
 
             ViewBag.PageNumber = page;
-            ViewBag.TotalPages = Math.Ceiling((double)products.Count() / pageSize);
+            ViewBag.TotalPages = Math.Ceiling((double)totalCount / pageSize);
 
-            return View(HomeVM);
+            return View(homeVM);
         }
 
         public async Task<IActionResult> LoadMoreProducts(int page = 1)
         {
             int pageSize = 4;
-            var products = await productService.GetAllAsync();
-            var pagedProduct = products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
-            return PartialView("_ProductPartialView", pagedProduct);
+            var products = await _productService.GetAllAsync();
+            var pagedProducts = products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            return PartialView("_ProductPartialView", pagedProducts);
         }
+
         public new IActionResult NotFound()
         {
             Response.StatusCode = 404;
