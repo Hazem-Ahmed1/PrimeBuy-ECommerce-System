@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Identity;
 using System.ComponentModel.DataAnnotations;
 
 namespace PrimeBuy.Domain.Models

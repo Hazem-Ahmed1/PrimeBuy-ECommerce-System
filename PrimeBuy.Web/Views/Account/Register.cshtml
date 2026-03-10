@@ -1,3 +1,4 @@
+@model RegisterViewModel
 @{
     ViewData["Title"] = "Create Account";
     Layout = "_Layout";
@@ -23,31 +24,63 @@
                         <h2>Create an account</h2>
                         <p class="auth-subtitle">Enter your details below</p>
 
-                        <form id="signupForm" novalidate>
+                        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                        <form asp-action="Register" method="post" class="auth-form-container">
                             <div class="input-group-auth">
-                                <input type="text" class="form-input" placeholder="Name" required data-label="Name">
-                                <span class="error-msg"><i class="bi bi-exclamation-circle"></i> <span></span></span>
+                                <input asp-for="FirstName" class="form-input" placeholder="First Name" />
+                                <span asp-validation-for="FirstName" class="error-msg"><i class="bi bi-exclamation-circle"></i> <span></span></span>
                             </div>
+                            
                             <div class="input-group-auth">
-                                <input type="text" class="form-input" placeholder="Email or Phone Number" required data-label="Email or Phone Number">
-                                <span class="error-msg"><i class="bi bi-exclamation-circle"></i> <span></span></span>
+                                <input asp-for="MiddleName" class="form-input" placeholder="Middle Name" />
+                                <span asp-validation-for="MiddleName" class="error-msg"><i class="bi bi-exclamation-circle"></i> <span></span></span>
                             </div>
+                            
                             <div class="input-group-auth">
-                                <input type="password" class="form-input" placeholder="Password" required minlength="6" data-label="Password">
-                                <span class="error-msg"><i class="bi bi-exclamation-circle"></i> <span></span></span>
+                                <input asp-for="LastName" class="form-input" placeholder="Last Name" />
+                                <span asp-validation-for="LastName" class="error-msg"><i class="bi bi-exclamation-circle"></i> <span></span></span>
+                            </div>
+                            
+                            <div class="input-group-auth">
+                                <input asp-for="Email" class="form-input" placeholder="Email Address" />
+                                <span asp-validation-for="Email" class="error-msg"><i class="bi bi-exclamation-circle"></i> <span></span></span>
+                            </div>
+                            
+                            <div class="input-group-auth">
+                                <input asp-for="Password" class="form-input" placeholder="Password" type="password" />
+                                <span asp-validation-for="Password" class="error-msg"><i class="bi bi-exclamation-circle"></i> <span></span></span>
+                            </div>
+                            
+                            <div class="input-group-auth">
+                                <input asp-for="ConfirmPassword" class="form-input" placeholder="Confirm Password" type="password" />
+                                <span asp-validation-for="ConfirmPassword" class="error-msg"><i class="bi bi-exclamation-circle"></i> <span></span></span>
+                            </div>
+                            
+                            <div class="form-check mb-3">
+                                <input asp-for="AgreeToTerms" class="form-check-input" />
+                                <label asp-for="AgreeToTerms" class="form-check-label">
+                                    I agree to the Terms & Conditions
+                                </label>
+                                <span asp-validation-for="AgreeToTerms" class="text-danger d-block"></span>
                             </div>
 
                             <button type="submit" class="btn-auth">Create Account</button>
-
-                            <button type="button" class="btn-google">
-                                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
-                                Sign up with Google
-                            </button>
                         </form>
 
                         <div class="auth-footer-link">
-                            Already have account? <a href="login.html">Log in</a>
+                            Already have account? <a asp-action="Login">Log in</a>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
                     </div>
                 </div>
             </div>

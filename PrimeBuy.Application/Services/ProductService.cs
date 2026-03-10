@@ -1,64 +1,60 @@
-﻿using PrimeBuy.Application.Interfaces.Repositories;
-using PrimeBuy.Application.Interfaces.Services;
+﻿using PrimeBuy.Application.Interfaces.Services;
+using PrimeBuy.Application.Interfaces.UnitOfWork;
 using PrimeBuy.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PrimeBuy.Application.Services
 {
     public class ProductService : IProductService
     {
-        IProductRepository productRepository;
-        IOrderItemRepository orderItemRepository;
-        public ProductService(IProductRepository productRepository,IOrderItemRepository orderItemRepository)
+        private readonly IUnitOfWork _unitOfWork;
+
+        public ProductService(IUnitOfWork unitOfWork)
         {
-            this.productRepository = productRepository;
-            this.orderItemRepository = orderItemRepository;
-        }
-        public async Task DeleteProduct(Product entity)
-        {
-            productRepository.Delete(entity);
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<IEnumerable<Product>> GetAllAsync()
-        {
-            return await productRepository.GetAllAsync();
-        }
-
-        public  async Task<IEnumerable<Product>> getHighRateProductsAsync()
-        {
-            var products = await productRepository.GetAllAsync();
-            return products.Where(p => p.Rating >= 4).Take(5);
-        }
+            => await _unitOfWork.Products.GetAllAsync();
 
         public async Task<Product> GetProductById(int id)
+            => await _unitOfWork.Products.GetByIdAsync(id);
+
+        public async Task<Product?> GetProductByIdWithCategory(int id)
+            => await _unitOfWork.Products.GetProductByIdWithCategoryAsync(id);
+
+        public async Task AddProduct(Product product)
         {
-            return await productRepository.GetByIdAsync(id);
+            await _unitOfWork.Products.AddAsync(product);
+            await _unitOfWork.SaveChangesAsync();
         }
 
         public async Task UpdateProduct(Product product)
         {
-             productRepository.Update(product);
+            _unitOfWork.Products.Update(product);
+            await _unitOfWork.SaveChangesAsync();
         }
-        public async Task<IEnumerable<Product>> getBestSalesAsync()
+
+        public async Task DeleteProduct(Product entity)
         {
-            var products = await productRepository.GetAllAsync();
-            var orderItems = await orderItemRepository.GetAllAsync();
-
-            var bestSales = orderItems
-                .GroupBy(oi => oi.ProductId)
-                .Select(g => new { ProductId = g.Key, TotalSold = g.Sum(e => e.Quantity) })
-                .OrderByDescending(o => o.TotalSold)
-                .Take(5)
-                .Join(products,
-                      g => g.ProductId,
-                      p => p.Id,
-                      (g, p) => p);
-
-            return bestSales;
+            _unitOfWork.Products.Delete(entity);
+            await _unitOfWork.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<Product>> getHighRateProductsAsync()
+            => await _unitOfWork.Products.GetHighRatedProductsAsync(5);
 
+        public async Task<IEnumerable<Product>> getBestSalesAsync()
+            => await _unitOfWork.Products.GetBestSellingProductsAsync(5);
+
+        public async Task<IEnumerable<Product>> GetProductsWithCategoryAsync()
+            => await _unitOfWork.Products.GetProductsWithCategoryAsync();
+
+        public async Task<(IEnumerable<Product> products, int totalCount)> GetFilteredProductsAsync(
+            int? categoryId = null, string searchTerm = null, string sortBy = "default",
+            int page = 1, int pageSize = 12)
+            => await _unitOfWork.Products.GetFilteredProductsAsync(categoryId, searchTerm, sortBy, page, pageSize);
+
+        public async Task<Dictionary<int, int>> GetCategoryProductCountsAsync()
+            => await _unitOfWork.Products.GetCategoryProductCountsAsync();
     }
 }

@@ -9,11 +9,11 @@ namespace PrimeBuy.Web.ViewModels
         
         [Required(ErrorMessage = "Product name is required")]
         [Display(Name = "Product Name")]
-        public string Name { get; set; }
+        public required string Name { get; set; }
         
         [Required(ErrorMessage = "SKU is required")]
         [RegularExpression(@"^[A-Za-z]{3}-\d{4}", ErrorMessage = "SKU format should be ABC-1234")]
-        public string SKU { get; set; }
+        public required string SKU { get; set; }
         
         [Required(ErrorMessage = "Price is required")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0")]
@@ -33,10 +33,10 @@ namespace PrimeBuy.Web.ViewModels
         public int CategoryId { get; set; }
         
         [Display(Name = "Category Name")]
-        public string CategoryName { get; set; }
+        public string? CategoryName { get; set; }
         
         [Display(Name = "Product Image")]
-        public string ProductImageUrl { get; set; }
+        public string? ProductImageUrl { get; set; }
         
         [Range(0, 5, ErrorMessage = "Rating must be between 0 and 5")]
         public double Rating { get; set; }
@@ -68,7 +68,7 @@ namespace PrimeBuy.Web.ViewModels
             {
                 Id = Id,
                 IsActive = IsActive,
-                ProductImageUrl = ProductImageUrl,
+                ProductImageUrl = ProductImageUrl ?? "",
                 Rating = Rating,
                 CreatedAt = CreatedAt == default ? DateTime.UtcNow : CreatedAt
             };

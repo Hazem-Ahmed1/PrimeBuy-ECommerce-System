@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PrimeBuy.Application.Interfaces.Repositories;
 using PrimeBuy.Infrastructure.Data;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PrimeBuy.Infrastructure.Repositories
 {
@@ -11,40 +8,21 @@ namespace PrimeBuy.Infrastructure.Repositories
     {
         protected readonly AppDbContext _context;
         protected readonly DbSet<T> dbSet;
-        public GenericRepository(AppDbContext db_context) 
+
+        public GenericRepository(AppDbContext context)
         {
-            _context = db_context;
+            _context = context;
             dbSet = _context.Set<T>();
         }
 
-        public async Task AddAsync(T entity)
-        {
-           await dbSet.AddAsync(entity);
-        }
+        public async Task AddAsync(T entity) => await dbSet.AddAsync(entity);
 
-        public void Delete(T entity)
-        {
-            dbSet.Remove(entity);
-        }
+        public void Delete(T entity) => dbSet.Remove(entity);
 
-        public async Task<IEnumerable<T>> GetAllAsync()
-        {
-            return await dbSet.ToListAsync();
-        }
+        public async Task<IEnumerable<T>> GetAllAsync() => await dbSet.ToListAsync();
 
-        public async Task<T> GetByIdAsync(object id)
-        {
-            return await dbSet.FindAsync(id);
-        }
+        public async Task<T> GetByIdAsync(object id) => await dbSet.FindAsync(id);
 
-        public async Task SaveChanges()
-        {
-            await _context.SaveChangesAsync();
-        }
-
-        public void Update(T entity)
-        {
-            dbSet.Update(entity);
-        }
+        public void Update(T entity) => dbSet.Update(entity);
     }
 }

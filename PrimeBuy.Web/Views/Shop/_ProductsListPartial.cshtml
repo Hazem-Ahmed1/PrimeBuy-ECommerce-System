@@ -1,0 +1,80 @@
+@model ShopVM
+
+<!-- Products Grid -->
+<div class="products-grid" id="productsGrid">
+    @foreach(var item in Model.Products)
+    {
+       <div class="shop-card">
+        <div class="shop-card-image">
+            <div class="shop-actions">
+                <button asp-action="" asp-controller="" class="shop-action-btn"><i class="bi bi-eye"></i></button>
+            </div>
+            <img src="@item.ProductImageUrl" alt="@item.Name">
+            <button class="shop-add-cart" onclick="addToCart(@item.Id)">Add To Cart</button>
+        </div>
+        <div class="shop-card-info">
+            <p class="shop-card-name"><a asp-action="" asp-controller="">@item.Name</a></p>
+            <div class="shop-card-prices">
+                <span class="shop-price-new">$@item.Price.ToString("F2")</span>
+            </div>
+            <div class="shop-card-rating">
+                <span class="stars">
+                    @{
+                        int fullStars = (int)Math.Floor(item.Rating);
+                        bool hasHalfStar = item.Rating - fullStars >= 0.5;
+                        
+                        for(int i = 0; i < fullStars; i++)
+                        {
+                            <i class="bi bi-star-fill"></i>
+                        }
+                        
+                        if(hasHalfStar)
+                        {
+                            <i class="bi bi-star-half"></i>
+                        }
+                        
+                        for(int i = fullStars + (hasHalfStar ? 1 : 0); i < 5; i++)
+                        {
+                            <i class="bi bi-star"></i>
+                        }
+                    }
+                </span>
+                <span class="count">(@item.Rating.ToString("F1"))</span>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+<!-- Pagination -->
+<div class="shop-pagination">
+    @if (Model.CurrentPage > 1)
+    {
+        <a href="#" onclick="loadProducts(@(Model.CurrentPage - 1)); return false;" class="page-btn"><i class="bi bi-chevron-left"></i></a>
+    }
+    else
+    {
+        <button class="page-btn disabled"><i class="bi bi-chevron-left"></i></button>
+    }
+    
+    @for (int i = Math.Max(1, Model.CurrentPage - 2); i <= Math.Min(Model.TotalPages, Model.CurrentPage + 2); i++)
+    {
+        if (i == Model.CurrentPage)
+        {
+            <button class="page-btn active">@i</button>
+        }
+        else
+        {
+            <a href="#" onclick="loadProducts(@i); return false;" class="page-btn">@i</a>
+        }
+    }
+    
+    @if (Model.CurrentPage < Model.TotalPages)
+    {
+        <a href="#" onclick="loadProducts(@(Model.CurrentPage + 1)); return false;" class="page-btn"><i class="bi bi-chevron-right"></i></a>
+    }
+    else
+    {
+        <button class="page-btn disabled"><i class="bi bi-chevron-right"></i></button>
+    }
+</div>
