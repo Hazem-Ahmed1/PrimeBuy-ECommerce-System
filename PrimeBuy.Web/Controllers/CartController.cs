@@ -38,13 +38,25 @@ namespace PrimeBuy.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToCart(int productId, int quantity = 1)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
-            await _cartService.AddToCartAsync(userId, productId, quantity);
+            try
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+                await _cartService.AddToCartAsync(userId, productId, quantity);
 
-            if (Request.Headers.XRequestedWith == "XMLHttpRequest")
-                return Json(new { success = true, message = "Product added to cart!" });
+                if (Request.Headers.XRequestedWith == "XMLHttpRequest")
+                    return Json(new { success = true, message = "Product added to cart!" });
 
-            return RedirectToAction("Index");
+                TempData["Success"] = "Product added to cart successfully!";
+                return RedirectToAction("Index");
+            }
+            catch (InvalidOperationException ex)
+            {
+                if (Request.Headers.XRequestedWith == "XMLHttpRequest")
+                    return Json(new { success = false, message = ex.Message });
+
+                TempData["Error"] = ex.Message;
+                return RedirectToAction("Details", "Product", new { id = productId });
+            }
         }
 
         [HttpPost]
@@ -66,20 +78,27 @@ namespace PrimeBuy.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateQuantity(int cartItemId, int quantity)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
-            await _cartService.UpdateQuantityAsync(userId, cartItemId, quantity);
-
-            var cart = await _cartService.GetOrCreateCartAsync(userId);
-            var item = cart.CartItems.FirstOrDefault(ci => ci.Id == cartItemId);
-            var cartTotal = cart.CartItems.Sum(ci => ci.Product.Price * ci.Quantity);
-
-            return Json(new
+            try
             {
-                success = true,
-                itemSubtotal = item != null ? (item.Product.Price * item.Quantity) : 0,
-                cartSubtotal = cartTotal,
-                cartTotal = cartTotal
-            });
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+                await _cartService.UpdateQuantityAsync(userId, cartItemId, quantity);
+
+                var cart = await _cartService.GetOrCreateCartAsync(userId);
+                var item = cart.CartItems.FirstOrDefault(ci => ci.Id == cartItemId);
+                var cartTotal = cart.CartItems.Sum(ci => ci.Product.Price * ci.Quantity);
+
+                return Json(new
+                {
+                    success = true,
+                    itemSubtotal = item != null ? (item.Product.Price * item.Quantity) : 0,
+                    cartSubtotal = cartTotal,
+                    cartTotal = cartTotal
+                });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
         }
     }
 }

@@ -29,17 +29,43 @@ namespace PrimeBuy.Application.Services
 
         public async Task AddToCartAsync(string userId, int productId, int quantity = 1)
         {
+            // Get the product to check stock
+            var product = await _unitOfWork.Products.GetByIdAsync(productId);
+            if (product == null)
+            {
+                throw new InvalidOperationException("Product not found.");
+            }
+
+            // Check if product is out of stock
+            if (product.StockQuantity <= 0)
+            {
+                throw new InvalidOperationException($"Sorry, '{product.Name}' is currently out of stock.");
+            }
+
             var cart = await GetOrCreateCartAsync(userId);
 
             var existingItem = cart.CartItems.FirstOrDefault(ci => ci.ProductId == productId);
             if (existingItem != null)
             {
-                existingItem.Quantity += quantity;
+                // Check if adding more quantity exceeds stock
+                int newQuantity = existingItem.Quantity + quantity;
+                if (newQuantity > product.StockQuantity)
+                {
+                    throw new InvalidOperationException($"Cannot add to cart. Only {product.StockQuantity} units available, but you already have {existingItem.Quantity} in your cart.");
+                }
+
+                existingItem.Quantity = newQuantity;
                 existingItem.UpdatedAt = DateTime.UtcNow;
                 _unitOfWork.CartItems.Update(existingItem);
             }
             else
             {
+                // Check if initial quantity exceeds stock
+                if (quantity > product.StockQuantity)
+                {
+                    throw new InvalidOperationException($"Cannot add to cart. Only {product.StockQuantity} units available.");
+                }
+
                 var cartItem = new CartItem(cart.Id, productId, quantity);
                 await _unitOfWork.CartItems.AddAsync(cartItem);
             }
@@ -71,6 +97,19 @@ namespace PrimeBuy.Application.Services
                 }
                 else
                 {
+                    // Get the product to check stock
+                    var product = await _unitOfWork.Products.GetByIdAsync(item.ProductId);
+                    if (product == null)
+                    {
+                        throw new InvalidOperationException("Product not found.");
+                    }
+
+                    // Check if quantity exceeds stock
+                    if (quantity > product.StockQuantity)
+                    {
+                        throw new InvalidOperationException($"Cannot update quantity. Only {product.StockQuantity} units of '{product.Name}' are available in stock.");
+                    }
+
                     item.Quantity = quantity;
                     item.UpdatedAt = DateTime.UtcNow;
                     _unitOfWork.CartItems.Update(item);

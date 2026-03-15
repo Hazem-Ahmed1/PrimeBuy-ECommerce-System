@@ -19,10 +19,43 @@ namespace PrimeBuy.Web.Areas.Admin.Controllers
             _categoryService = categoryService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchTerm, int? categoryId, string sortBy = "default")
         {
-            var products = await _productService.GetProductsWithCategoryAsync();
-            return View(products);
+            // Get all products with category
+            var allProducts = await _productService.GetProductsWithCategoryAsync();
+
+            // Apply search filter
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                allProducts = allProducts.Where(p =>
+                    p.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                    p.SKU.Contains(searchTerm, StringComparison.OrdinalIgnoreCase));
+            }
+
+            // Apply category filter
+            if (categoryId.HasValue)
+            {
+                allProducts = allProducts.Where(p => p.CategoryId == categoryId.Value);
+            }
+
+            // Apply sorting
+            allProducts = sortBy switch
+            {
+                "name" => allProducts.OrderBy(p => p.Name),
+                "price_low" => allProducts.OrderBy(p => p.Price),
+                "price_high" => allProducts.OrderByDescending(p => p.Price),
+                "stock" => allProducts.OrderBy(p => p.StockQuantity),
+                "category" => allProducts.OrderBy(p => p.Category?.Name),
+                _ => allProducts.OrderByDescending(p => p.Id)
+            };
+
+            // Pass filter values to view
+            ViewBag.SearchTerm = searchTerm;
+            ViewBag.SelectedCategoryId = categoryId;
+            ViewBag.SortBy = sortBy;
+            ViewBag.Categories = await _categoryService.GetAllAsync();
+
+            return View(allProducts);
         }
 
         public async Task<IActionResult> Create()
@@ -41,9 +74,52 @@ namespace PrimeBuy.Web.Areas.Admin.Controllers
                 return View(model);
             }
 
-            await _productService.AddProduct(model.ToProduct());
-            TempData["Success"] = "Product created successfully.";
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _productService.AddProduct(model.ToProduct());
+                TempData["Success"] = "Product created successfully.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Microsoft.EntityFrameworkCore.DbUpdateException ex)
+            {
+                // Handle database-specific errors
+                if (ex.InnerException?.Message.Contains("UNIQUE") == true ||
+                    ex.InnerException?.Message.Contains("duplicate") == true)
+                {
+                    if (ex.InnerException?.Message.Contains("SKU") == true)
+                    {
+                        TempData["Error"] = "A product with this SKU already exists.";
+                        TempData["ErrorDetails"] = "Please choose a unique SKU for the product.";
+                    }
+                    else
+                    {
+                        TempData["Error"] = "A product with this information already exists.";
+                        TempData["ErrorDetails"] = "Please check the product name and SKU for duplicates.";
+                    }
+                }
+                else if (ex.InnerException?.Message.Contains("FOREIGN KEY") == true)
+                {
+                    TempData["Error"] = "Invalid category selected.";
+                    TempData["ErrorDetails"] = "The selected category does not exist. Please refresh the page and select a valid category.";
+                }
+                else
+                {
+                    TempData["Error"] = "Failed to create product due to a database error.";
+                    TempData["ErrorDetails"] = "Please check your input and try again. If the problem persists, contact support.";
+                }
+
+                await LoadCategories();
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                // Handle any other unexpected errors
+                TempData["Error"] = "An unexpected error occurred while creating the product.";
+                TempData["ErrorDetails"] = "Please try again. If the problem persists, contact support.";
+
+                await LoadCategories();
+                return View(model);
+            }
         }
 
         public async Task<IActionResult> Edit(int id)

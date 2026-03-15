@@ -26,6 +26,47 @@
     </a>
 </div>
 
+<!-- Search and Filter Section -->
+<div class="card border-0 shadow-sm mb-3">
+    <div class="card-body">
+        <form method="get" asp-action="Index" class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label">Search</label>
+                <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="form-control" placeholder="Search by name or SKU...">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Category</label>
+                <select name="categoryId" class="form-select">
+                    <option value="">All Categories</option>
+                    @foreach (var category in ViewBag.Categories as IEnumerable<PrimeBuy.Domain.Models.Category>)
+                    {
+                        <option value="@category.Id" selected="@(ViewBag.SelectedCategoryId == category.Id)">@category.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Sort By</label>
+                <select name="sortBy" class="form-select">
+                    <option value="default" selected="@(ViewBag.SortBy == "default")">Newest First</option>
+                    <option value="name" selected="@(ViewBag.SortBy == "name")">Name (A-Z)</option>
+                    <option value="price_low" selected="@(ViewBag.SortBy == "price_low")">Price (Low to High)</option>
+                    <option value="price_high" selected="@(ViewBag.SortBy == "price_high")">Price (High to Low)</option>
+                    <option value="stock" selected="@(ViewBag.SortBy == "stock")">Stock Level</option>
+                    <option value="category" selected="@(ViewBag.SortBy == "category")">Category</option>
+                </select>
+            </div>
+            <div class="col-md-2 d-flex align-items-end gap-2">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-search me-1"></i> Filter
+                </button>
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="bi bi-x-lg"></i>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div class="card border-0 shadow-sm">
     <div class="card-body p-0">
         <table class="table table-hover mb-0">

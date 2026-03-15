@@ -4,6 +4,19 @@
     ViewData["Title"] = "Create Category";
 }
 
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <strong>@TempData["Error"]</strong>
+        @if (TempData["ErrorDetails"] != null)
+        {
+            <br><small>@TempData["ErrorDetails"]</small>
+        }
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h4>Create Category</h4>
     <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary">
@@ -14,10 +27,12 @@
 <div class="card border-0 shadow-sm">
     <div class="card-body">
         <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
             <div class="row g-3">
                 <div class="col-md-6">
                     <label class="form-label">Name <span class="text-danger">*</span></label>
-                    <input asp-for="Name" class="form-control" />
+                    <input asp-for="Name" class="form-control" required />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="col-md-6">
@@ -35,3 +50,7 @@
         </form>
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

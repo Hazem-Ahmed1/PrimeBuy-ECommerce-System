@@ -4,6 +4,19 @@
     ViewData["Title"] = "Create Product";
 }
 
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <strong>@TempData["Error"]</strong>
+        @if (TempData["ErrorDetails"] != null)
+        {
+            <br><small>@TempData["ErrorDetails"]</small>
+        }
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h4>Create Product</h4>
     <a asp-area="Admin" asp-controller="Product" asp-action="Index" class="btn btn-outline-secondary">
@@ -19,27 +32,27 @@
             <div class="row g-3">
                 <div class="col-md-6">
                     <label asp-for="Name" class="form-label"></label>
-                    <input asp-for="Name" class="form-control" />
+                    <input asp-for="Name" class="form-control" required />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="col-md-6">
                     <label asp-for="SKU" class="form-label"></label>
-                    <input asp-for="SKU" class="form-control" placeholder="ABC-1234" />
+                    <input asp-for="SKU" class="form-control" placeholder="ABC-1234" required />
                     <span asp-validation-for="SKU" class="text-danger"></span>
                 </div>
                 <div class="col-md-4">
                     <label asp-for="Price" class="form-label"></label>
-                    <input asp-for="Price" class="form-control" />
+                    <input asp-for="Price" class="form-control" required />
                     <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
                 <div class="col-md-4">
                     <label asp-for="StockQuantity" class="form-label"></label>
-                    <input asp-for="StockQuantity" class="form-control" />
+                    <input asp-for="StockQuantity" class="form-control" required />
                     <span asp-validation-for="StockQuantity" class="text-danger"></span>
                 </div>
                 <div class="col-md-4">
                     <label asp-for="CategoryId" class="form-label"></label>
-                    <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-select">
+                    <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-select" required>
                         <option value="">-- Select Category --</option>
                     </select>
                     <span asp-validation-for="CategoryId" class="text-danger"></span>
@@ -65,3 +78,7 @@
         </form>
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

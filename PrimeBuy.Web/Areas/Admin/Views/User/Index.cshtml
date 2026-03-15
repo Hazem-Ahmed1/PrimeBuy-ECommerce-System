@@ -1,0 +1,133 @@
+@model IEnumerable<PrimeBuy.Web.Areas.Admin.Controllers.UserViewModel>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show">
+        @TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show">
+        @TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h4>Users (@Model.Count())</h4>
+</div>
+
+<!-- Search and Filter Section -->
+<div class="card border-0 shadow-sm mb-3">
+    <div class="card-body">
+        <form method="get" asp-action="Index" class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Search</label>
+                <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="form-control" placeholder="Search by name, email, or username...">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Role</label>
+                <select name="roleFilter" class="form-select">
+                    <option value="">All Roles</option>
+                    @foreach (var role in ViewBag.AllRoles as IEnumerable<string>)
+                    {
+                        <option value="@role" selected="@(ViewBag.RoleFilter == role)">@role</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2 d-flex align-items-end gap-2">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-search me-1"></i> Search
+                </button>
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="bi bi-x-lg"></i>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-0">
+        @if (Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Username</th>
+                            <th>Phone</th>
+                            <th>Email Confirmed</th>
+                            <th>Roles</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.User.FirstName @item.User.MiddleName @item.User.LastName</td>
+                                <td>@item.User.Email</td>
+                                <td>@item.User.UserName</td>
+                                <td>@(item.User.PhoneNumber ?? "—")</td>
+                                <td>
+                                    @if (item.User.EmailConfirmed)
+                                    {
+                                        <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>Verified</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-warning"><i class="bi bi-exclamation-circle me-1"></i>Not Verified</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.Roles.Any())
+                                    {
+                                        @foreach (var role in item.Roles)
+                                        {
+                                            <span class="badge bg-primary me-1">@role</span>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">No roles</span>
+                                    }
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-outline-info" title="View Details" onclick="viewUserDetails('@item.User.Id')">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="text-center py-5">
+                <i class="bi bi-people" style="font-size: 3rem; color: #ccc;"></i>
+                <p class="text-muted mt-3">No users found matching your search criteria.</p>
+                <a asp-action="Index" class="btn btn-outline-primary">Clear Filters</a>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function viewUserDetails(userId) {
+            // Placeholder for user details modal or navigation
+            alert('User details view coming soon! User ID: ' + userId);
+        }
+    </script>
+}

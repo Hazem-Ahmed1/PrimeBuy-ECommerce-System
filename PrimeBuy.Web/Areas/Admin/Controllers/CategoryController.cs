@@ -33,16 +33,50 @@ namespace PrimeBuy.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Category model)
         {
-            if (string.IsNullOrWhiteSpace(model.Name))
+            if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("Name", "Name is required.");
                 await LoadParentCategories();
                 return View(model);
             }
 
-            await _categoryService.AddAsync(model);
-            TempData["Success"] = "Category created successfully.";
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _categoryService.AddAsync(model);
+                TempData["Success"] = "Category created successfully.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Microsoft.EntityFrameworkCore.DbUpdateException ex)
+            {
+                // Handle database-specific errors
+                if (ex.InnerException?.Message.Contains("UNIQUE") == true ||
+                    ex.InnerException?.Message.Contains("duplicate") == true)
+                {
+                    TempData["Error"] = "A category with this name already exists.";
+                    TempData["ErrorDetails"] = "Please choose a different name for the category.";
+                }
+                else if (ex.InnerException?.Message.Contains("FOREIGN KEY") == true)
+                {
+                    TempData["Error"] = "Invalid parent category selected.";
+                    TempData["ErrorDetails"] = "The selected parent category does not exist. Please refresh and try again.";
+                }
+                else
+                {
+                    TempData["Error"] = "Failed to create category due to a database error.";
+                    TempData["ErrorDetails"] = "Please check your input and try again. If the problem persists, contact support.";
+                }
+
+                await LoadParentCategories();
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                // Handle any other unexpected errors
+                TempData["Error"] = "An unexpected error occurred while creating the category.";
+                TempData["ErrorDetails"] = "Please try again. If the problem persists, contact support.";
+
+                await LoadParentCategories();
+                return View(model);
+            }
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -58,9 +92,8 @@ namespace PrimeBuy.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Category model)
         {
-            if (string.IsNullOrWhiteSpace(model.Name))
+            if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("Name", "Name is required.");
                 await LoadParentCategories(model.Id);
                 return View(model);
             }

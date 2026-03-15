@@ -23,6 +23,22 @@ namespace PrimeBuy.Web.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
             var cart = await _cartService.GetOrCreateCartAsync(userId);
 
+            // Validate stock before allowing checkout
+            foreach (var cartItem in cart.CartItems)
+            {
+                if (cartItem.Product.StockQuantity <= 0)
+                {
+                    TempData["Error"] = $"The product '{cartItem.Product.Name}' is out of stock. Please remove it from your cart to continue.";
+                    return RedirectToAction("Index", "Cart");
+                }
+
+                if (cartItem.Quantity > cartItem.Product.StockQuantity)
+                {
+                    TempData["Error"] = $"The quantity for '{cartItem.Product.Name}' exceeds available stock. Available: {cartItem.Product.StockQuantity}, In cart: {cartItem.Quantity}. Please update your cart to continue.";
+                    return RedirectToAction("Index", "Cart");
+                }
+            }
+
             var vm = new CheckoutVM
             {
                 Items = cart.CartItems.Select(ci => new CartItemVM

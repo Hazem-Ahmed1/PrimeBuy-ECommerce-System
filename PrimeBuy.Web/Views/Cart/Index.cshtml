@@ -17,6 +17,24 @@
             <span class="current">Cart</span>
         </nav>
 
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                <strong>@TempData["Error"]</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                @TempData["Success"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
         @if (!Model.Items.Any())
         {
             <div class="text-center py-5">
@@ -110,7 +128,17 @@
                     }
                     document.getElementById('cart-subtotal').textContent = '$' + parseFloat(data.cartSubtotal).toFixed(2);
                     document.getElementById('cart-total').textContent = '$' + parseFloat(data.cartTotal).toFixed(2);
+                } else {
+                    // Show error message
+                    alert(data.message || 'Failed to update quantity');
+                    // Reload page to show correct quantities
+                    location.reload();
                 }
+            })
+            .catch(error => {
+                console.error('Error updating quantity:', error);
+                alert('An error occurred while updating the cart');
+                location.reload();
             });
         }
     </script>

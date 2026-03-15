@@ -7,13 +7,13 @@
        <div class="shop-card">
         <div class="shop-card-image">
             <div class="shop-actions">
-                <button asp-action="" asp-controller="" class="shop-action-btn"><i class="bi bi-eye"></i></button>
+                <a asp-action="Details" asp-controller="Product" asp-route-id="@item.Id" class="shop-action-btn"><i class="bi bi-eye"></i></a>
             </div>
             <img src="@item.ProductImageUrl" alt="@item.Name">
             <button class="shop-add-cart" onclick="addToCart(@item.Id)">Add To Cart</button>
         </div>
         <div class="shop-card-info">
-            <p class="shop-card-name"><a asp-action="" asp-controller="">@item.Name</a></p>
+            <p class="shop-card-name"><a asp-action="Details" asp-controller="Product" asp-route-id="@item.Id">@item.Name</a></p>
             <div class="shop-card-prices">
                 <span class="shop-price-new">$@item.Price.ToString("F2")</span>
             </div>
