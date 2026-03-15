@@ -1,4 +1,4 @@
-@model IEnumerable<PrimeBuy.Domain.Models.Order>
+@model IEnumerable<PrimeBuy.Web.ViewModels.OrderSummaryVM>
 
 @{
     ViewData["Title"] = "Orders";
@@ -35,9 +35,9 @@
                 {
                     <tr>
                         <td><strong>@order.OrderNumber</strong></td>
-                        <td>@order.ApplicationUser?.Email</td>
+                        <td>@order.CustomerEmail</td>
                         <td>@order.OrderDate.ToString("MMM dd, yyyy")</td>
-                        <td>@order.OrderItems.Count</td>
+                        <td>@order.ItemCount</td>
                         <td>$@order.TotalAmount.ToString("F2")</td>
                         <td>
                             @{

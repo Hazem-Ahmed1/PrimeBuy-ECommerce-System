@@ -12,5 +12,8 @@ namespace PrimeBuy.Application.Interfaces.UnitOfWork
         IOrderRepository Orders { get; }
         IAddressRepository Addresses { get; }
         Task<int> SaveChangesAsync();
+        Task BeginTransactionAsync();
+        Task CommitTransactionAsync();
+        Task RollbackTransactionAsync();
     }
 }

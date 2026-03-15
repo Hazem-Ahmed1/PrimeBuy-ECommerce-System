@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PrimeBuy.Application.Interfaces.Services;
+using PrimeBuy.Web.ViewModels;
 using System.Security.Claims;
 
 namespace PrimeBuy.Web.Controllers
@@ -19,7 +20,18 @@ namespace PrimeBuy.Web.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
             var orders = await _orderService.GetUserOrdersAsync(userId);
-            return View(orders);
+
+            var vm = orders.Select(o => new OrderSummaryVM
+            {
+                OrderId = o.OrderId,
+                OrderNumber = o.OrderNumber,
+                OrderDate = o.OrderDate,
+                ItemCount = o.OrderItems.Count,
+                TotalAmount = o.TotalAmount,
+                Status = o.Status
+            }).ToList();
+
+            return View(vm);
         }
 
         public async Task<IActionResult> Details(int id)
@@ -28,7 +40,28 @@ namespace PrimeBuy.Web.Controllers
             var order = await _orderService.GetOrderByIdAsync(id);
             if (order == null || order.ApplicationUserId != userId)
                 return NotFound();
-            return View(order);
+
+            var vm = new OrderDetailsVM
+            {
+                OrderId = order.OrderId,
+                OrderNumber = order.OrderNumber,
+                OrderDate = order.OrderDate,
+                TotalAmount = order.TotalAmount,
+                Status = order.Status,
+                Items = order.OrderItems.Select(oi => new OrderItemVM
+                {
+                    ProductName = oi.Product.Name,
+                    ProductImageUrl = oi.Product.ProductImageUrl,
+                    UnitPrice = oi.UnitPrice,
+                    Quantity = oi.Quantity
+                }).ToList(),
+                Street = order.Address?.Street,
+                City = order.Address?.City,
+                ZipCode = order.Address?.ZipCode,
+                Country = order.Address?.Country
+            };
+
+            return View(vm);
         }
     }
 }

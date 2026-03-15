@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PrimeBuy.Application.Interfaces.Services;
+using PrimeBuy.Web.ViewModels;
 using System.Security.Claims;
 
 namespace PrimeBuy.Web.Controllers
@@ -19,7 +20,19 @@ namespace PrimeBuy.Web.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
             var cart = await _cartService.GetOrCreateCartAsync(userId);
-            return View(cart);
+            var vm = new CartVM
+            {
+                Items = cart.CartItems.Select(ci => new CartItemVM
+                {
+                    CartItemId = ci.Id,
+                    ProductId = ci.ProductId,
+                    ProductName = ci.Product.Name,
+                    ProductImageUrl = ci.Product.ProductImageUrl,
+                    Price = ci.Product.Price,
+                    Quantity = ci.Quantity
+                }).ToList()
+            };
+            return View(vm);
         }
 
         [HttpPost]
@@ -39,6 +52,14 @@ namespace PrimeBuy.Web.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
             await _cartService.RemoveFromCartAsync(userId, cartItemId);
+
+            if (Request.Headers.XRequestedWith == "XMLHttpRequest")
+            {
+                var cart = await _cartService.GetOrCreateCartAsync(userId);
+                var subtotal = cart.CartItems.Sum(ci => ci.Product.Price * ci.Quantity);
+                return Json(new { success = true, cartTotal = subtotal });
+            }
+
             return RedirectToAction("Index");
         }
 
@@ -47,7 +68,18 @@ namespace PrimeBuy.Web.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
             await _cartService.UpdateQuantityAsync(userId, cartItemId, quantity);
-            return RedirectToAction("Index");
+
+            var cart = await _cartService.GetOrCreateCartAsync(userId);
+            var item = cart.CartItems.FirstOrDefault(ci => ci.Id == cartItemId);
+            var cartTotal = cart.CartItems.Sum(ci => ci.Product.Price * ci.Quantity);
+
+            return Json(new
+            {
+                success = true,
+                itemSubtotal = item != null ? (item.Product.Price * item.Quantity) : 0,
+                cartSubtotal = cartTotal,
+                cartTotal = cartTotal
+            });
         }
     }
 }

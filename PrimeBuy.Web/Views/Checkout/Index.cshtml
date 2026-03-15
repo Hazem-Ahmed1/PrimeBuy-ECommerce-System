@@ -1,4 +1,4 @@
-@model PrimeBuy.Domain.Models.Cart
+@model PrimeBuy.Web.ViewModels.CheckoutVM
 
 @{
     ViewData["Title"] = "Checkout";
@@ -27,19 +27,23 @@
                     @Html.AntiForgeryToken()
                     <div>
                         <label>Country<span class="required">*</span></label>
-                        <input type="text" name="country" class="form-field" required>
+                        <input type="text" asp-for="Country" class="form-field" required>
+                        <span asp-validation-for="Country" class="text-danger"></span>
                     </div>
                     <div>
                         <label>City<span class="required">*</span></label>
-                        <input type="text" name="city" class="form-field" required>
+                        <input type="text" asp-for="City" class="form-field" required>
+                        <span asp-validation-for="City" class="text-danger"></span>
                     </div>
                     <div>
                         <label>Street Address<span class="required">*</span></label>
-                        <input type="text" name="street" class="form-field" required>
+                        <input type="text" asp-for="Street" class="form-field" required>
+                        <span asp-validation-for="Street" class="text-danger"></span>
                     </div>
                     <div>
                         <label>Zip Code<span class="required">*</span></label>
-                        <input type="text" name="zipCode" class="form-field" required>
+                        <input type="text" asp-for="ZipCode" class="form-field" required>
+                        <span asp-validation-for="ZipCode" class="text-danger"></span>
                     </div>
 
                     <button type="submit" class="btn-place-order mt-4">Place Order</button>
@@ -48,24 +52,20 @@
 
             <div class="col-lg-5 offset-lg-1">
                 <div class="order-summary" data-animate="fade-right">
-                    @foreach (var item in Model.CartItems)
+                    @foreach (var item in Model.Items)
                     {
                         <div class="order-item">
                             <div class="order-item-left">
-                                <img src="@item.Product.ProductImageUrl" alt="@item.Product.Name" style="width:50px;height:50px;object-fit:cover;border-radius:4px;">
-                                <span>@item.Product.Name x @item.Quantity</span>
+                                <img src="@item.ProductImageUrl" alt="@item.ProductName" style="width:50px;height:50px;object-fit:cover;border-radius:4px;">
+                                <span>@item.ProductName x @item.Quantity</span>
                             </div>
-                            <div class="order-item-right">$@((item.Product.Price * item.Quantity).ToString("F2"))</div>
+                            <div class="order-item-right">$@item.Subtotal.ToString("F2")</div>
                         </div>
-                    }
-
-                    @{
-                        var total = Model.CartItems.Sum(ci => ci.Product.Price * ci.Quantity);
                     }
 
                     <div class="summary-row">
                         <span class="label">Subtotal:</span>
-                        <span class="value">$@total.ToString("F2")</span>
+                        <span class="value">$@Model.Total.ToString("F2")</span>
                     </div>
                     <div class="summary-row">
                         <span class="label">Shipping:</span>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="summary-row">
                         <span class="label">Total:</span>
-                        <span class="value"><strong>$@total.ToString("F2")</strong></span>
+                        <span class="value"><strong>$@Model.Total.ToString("F2")</strong></span>
                     </div>
                 </div>
             </div>

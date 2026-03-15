@@ -1,4 +1,4 @@
-@model PrimeBuy.Domain.Models.Cart
+@model PrimeBuy.Web.ViewModels.CartVM
 
 @{
     ViewData["Title"] = "Shopping Cart";
@@ -17,7 +17,7 @@
             <span class="current">Cart</span>
         </nav>
 
-        @if (!Model.CartItems.Any())
+        @if (!Model.Items.Any())
         {
             <div class="text-center py-5">
                 <i class="bi bi-cart-x" style="font-size: 4rem; color: #ccc;"></i>
@@ -38,26 +38,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.CartItems)
+                    @foreach (var item in Model.Items)
                     {
-                        <tr>
+                        <tr data-cart-item-id="@item.CartItemId">
                             <td>
                                 <div class="product-cell">
-                                    <img src="@item.Product.ProductImageUrl" alt="@item.Product.Name" class="product-thumb" style="width:60px;height:60px;object-fit:cover;border-radius:4px;">
-                                    <span class="product-name">@item.Product.Name</span>
+                                    <img src="@item.ProductImageUrl" alt="@item.ProductName" class="product-thumb" style="width:60px;height:60px;object-fit:cover;border-radius:4px;">
+                                    <span class="product-name">@item.ProductName</span>
                                 </div>
                             </td>
-                            <td>$@item.Product.Price.ToString("F2")</td>
+                            <td>$@item.Price.ToString("F2")</td>
                             <td>
-                                <form asp-controller="Cart" asp-action="UpdateQuantity" method="post" style="display:inline;">
-                                    <input type="hidden" name="cartItemId" value="@item.Id" />
-                                    <input type="number" name="quantity" class="qty-spinner" value="@item.Quantity" min="1" max="99" onchange="this.form.submit()">
-                                </form>
+                                <input type="number" class="qty-spinner" value="@item.Quantity" min="1" max="99"
+                                       data-cart-item-id="@item.CartItemId"
+                                       onchange="updateQuantity(this, @item.CartItemId)">
                             </td>
-                            <td>$@((item.Product.Price * item.Quantity).ToString("F2"))</td>
+                            <td class="item-subtotal">$@item.Subtotal.ToString("F2")</td>
                             <td>
                                 <form asp-controller="Cart" asp-action="Remove" method="post" style="display:inline;">
-                                    <input type="hidden" name="cartItemId" value="@item.Id" />
+                                    <input type="hidden" name="cartItemId" value="@item.CartItemId" />
                                     <button type="submit" class="btn btn-sm btn-outline-danger" title="Remove"><i class="bi bi-x"></i></button>
                                 </form>
                             </td>
@@ -71,7 +70,7 @@
                     <h5>Cart Total</h5>
                     <div class="total-row">
                         <span>Subtotal:</span>
-                        <span>$@(Model.CartItems.Sum(ci => ci.Product.Price * ci.Quantity).ToString("F2"))</span>
+                        <span id="cart-subtotal">$@Model.Subtotal.ToString("F2")</span>
                     </div>
                     <div class="total-row">
                         <span>Shipping:</span>
@@ -79,7 +78,7 @@
                     </div>
                     <div class="total-row final">
                         <span>Total:</span>
-                        <span>$@(Model.CartItems.Sum(ci => ci.Product.Price * ci.Quantity).ToString("F2"))</span>
+                        <span id="cart-total">$@Model.Total.ToString("F2")</span>
                     </div>
                     <a asp-controller="Checkout" asp-action="Index" class="btn-checkout">Proceed to Checkout</a>
                 </div>
@@ -87,3 +86,32 @@
         }
     </div>
 </section>
+
+@section Scripts {
+    <script>
+        function updateQuantity(input, cartItemId) {
+            const quantity = parseInt(input.value);
+            if (quantity < 1) { input.value = 1; return; }
+
+            fetch('@Url.Action("UpdateQuantity", "Cart")', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || ''
+                },
+                body: `cartItemId=${cartItemId}&quantity=${quantity}`
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    const row = document.querySelector(`tr[data-cart-item-id="${cartItemId}"]`);
+                    if (row) {
+                        row.querySelector('.item-subtotal').textContent = '$' + parseFloat(data.itemSubtotal).toFixed(2);
+                    }
+                    document.getElementById('cart-subtotal').textContent = '$' + parseFloat(data.cartSubtotal).toFixed(2);
+                    document.getElementById('cart-total').textContent = '$' + parseFloat(data.cartTotal).toFixed(2);
+                }
+            });
+        }
+    </script>
+}

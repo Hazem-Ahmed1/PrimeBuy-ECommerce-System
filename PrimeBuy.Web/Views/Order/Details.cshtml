@@ -1,4 +1,4 @@
-@model PrimeBuy.Domain.Models.Order
+@model PrimeBuy.Web.ViewModels.OrderDetailsVM
 
 @{
     ViewData["Title"] = "Order Details";
@@ -47,16 +47,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model.OrderItems)
+                                @foreach (var item in Model.Items)
                                 {
                                     <tr>
                                         <td class="d-flex align-items-center gap-2">
-                                            <img src="@item.Product.ProductImageUrl" alt="@item.Product.Name" style="width:45px;height:45px;object-fit:cover;border-radius:4px;">
-                                            @item.Product.Name
+                                            <img src="@item.ProductImageUrl" alt="@item.ProductName" style="width:45px;height:45px;object-fit:cover;border-radius:4px;">
+                                            @item.ProductName
                                         </td>
                                         <td>$@item.UnitPrice.ToString("F2")</td>
                                         <td>@item.Quantity</td>
-                                        <td>$@((item.UnitPrice * item.Quantity).ToString("F2"))</td>
+                                        <td>$@item.Subtotal.ToString("F2")</td>
                                     </tr>
                                 }
                             </tbody>
@@ -80,14 +80,14 @@
                     </div>
                 </div>
 
-                @if (Model.Address != null)
+                @if (Model.Street != null)
                 {
                     <div class="card border-0 shadow-sm">
                         <div class="card-header bg-white"><h6 class="mb-0">Shipping Address</h6></div>
                         <div class="card-body">
-                            <p>@Model.Address.Street</p>
-                            <p>@Model.Address.City, @Model.Address.ZipCode</p>
-                            <p class="mb-0">@Model.Address.Country</p>
+                            <p>@Model.Street</p>
+                            <p>@Model.City, @Model.ZipCode</p>
+                            <p class="mb-0">@Model.Country</p>
                         </div>
                     </div>
                 }

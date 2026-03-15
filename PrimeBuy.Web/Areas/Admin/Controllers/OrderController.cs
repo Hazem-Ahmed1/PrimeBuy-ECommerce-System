@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PrimeBuy.Application.Interfaces.Services;
+using PrimeBuy.Web.ViewModels;
 
 namespace PrimeBuy.Web.Areas.Admin.Controllers
 {
@@ -18,14 +19,48 @@ namespace PrimeBuy.Web.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var orders = await _orderService.GetAllOrdersAsync();
-            return View(orders);
+
+            var vm = orders.Select(o => new OrderSummaryVM
+            {
+                OrderId = o.OrderId,
+                OrderNumber = o.OrderNumber,
+                OrderDate = o.OrderDate,
+                ItemCount = o.OrderItems.Count,
+                TotalAmount = o.TotalAmount,
+                Status = o.Status,
+                CustomerEmail = o.ApplicationUser?.Email
+            }).ToList();
+
+            return View(vm);
         }
 
         public async Task<IActionResult> Details(int id)
         {
             var order = await _orderService.GetOrderByIdAsync(id);
             if (order == null) return NotFound();
-            return View(order);
+
+            var vm = new OrderDetailsVM
+            {
+                OrderId = order.OrderId,
+                OrderNumber = order.OrderNumber,
+                OrderDate = order.OrderDate,
+                TotalAmount = order.TotalAmount,
+                Status = order.Status,
+                CustomerEmail = order.ApplicationUser?.Email,
+                Items = order.OrderItems.Select(oi => new OrderItemVM
+                {
+                    ProductName = oi.Product.Name,
+                    ProductImageUrl = oi.Product.ProductImageUrl,
+                    UnitPrice = oi.UnitPrice,
+                    Quantity = oi.Quantity
+                }).ToList(),
+                Street = order.Address?.Street,
+                City = order.Address?.City,
+                ZipCode = order.Address?.ZipCode,
+                Country = order.Address?.Country
+            };
+
+            return View(vm);
         }
 
         [HttpPost]

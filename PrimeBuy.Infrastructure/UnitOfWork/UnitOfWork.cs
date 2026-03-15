@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore.Storage;
 using PrimeBuy.Application.Interfaces.Repositories;
 using PrimeBuy.Application.Interfaces.UnitOfWork;
 using PrimeBuy.Infrastructure.Data;
@@ -15,6 +16,7 @@ namespace PrimeBuy.Infrastructure.UnitOfWork
         private ICartItemRepository? _cartItems;
         private IOrderRepository? _orders;
         private IAddressRepository? _addresses;
+        private IDbContextTransaction? _transaction;
 
         public UnitOfWork(AppDbContext context)
         {
@@ -30,6 +32,31 @@ namespace PrimeBuy.Infrastructure.UnitOfWork
         public IAddressRepository Addresses => _addresses ??= new AddressRepository(_context);
 
         public async Task<int> SaveChangesAsync() => await _context.SaveChangesAsync();
+
+        public async Task BeginTransactionAsync()
+        {
+            _transaction = await _context.Database.BeginTransactionAsync();
+        }
+
+        public async Task CommitTransactionAsync()
+        {
+            if (_transaction != null)
+            {
+                await _transaction.CommitAsync();
+                await _transaction.DisposeAsync();
+                _transaction = null;
+            }
+        }
+
+        public async Task RollbackTransactionAsync()
+        {
+            if (_transaction != null)
+            {
+                await _transaction.RollbackAsync();
+                await _transaction.DisposeAsync();
+                _transaction = null;
+            }
+        }
 
         public void Dispose() => _context.Dispose();
     }
